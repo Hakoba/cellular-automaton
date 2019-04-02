@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Second from './views/Second-stage.vue'
-
+import Valid from './components/Validation.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -20,6 +20,12 @@ export default new Router({
       name: 'second',
       component: Second
     },
+    {
+      path: '/validation',
+      name: 'validation',
+      component: Valid
+    },
+
    
   ]
 })

@@ -6,6 +6,7 @@
             ref='btn'
             v-model="number"
             label="Введите число"
+            v-on:keyup.enter='addColumn()'
           ></v-text-field>
     </v-card>
      <v-btn class="info" @click="addColumn()">Add column</v-btn>
@@ -103,5 +104,6 @@
   .small {
     max-width: 600px;
     margin:  30px auto;
+    /* color: rgb(17, 14, 2); */
   }
 </style>
