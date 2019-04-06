@@ -3,7 +3,7 @@
       <h1>Второй шаг</h1>
     <v-card>
      <v-btn class="info"><router-link to="/">Назад</router-link></v-btn>
-    <validation :datasets='datasets'></validation>
+    <!-- <validation :datasets='datasets'></validation> -->
       
        <!-- <v-text-field
             ref='btn'
@@ -15,17 +15,16 @@
      <!-- <v-btn class="info" @click="addColumn()">Add column</v-btn> -->
      <!-- <v-btn class="info" @click="fillData()">Randomize</v-btn> -->
     <bar-chart :chart-data="datacollection"></bar-chart>
+    <validation :data='datasets'/>
     <v-card>
      <!-- <v-btn class="info" @click="lmh()">Найти</v-btn> -->
-
-     
     </v-card>
   </div>
 </template>
 <script>
   import Validation from '@/components/Validation.vue'
   import BarChart from '@/components/BarExample.js'
-
+  
   export default {
      components: {
       BarChart,
