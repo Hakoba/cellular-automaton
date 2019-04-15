@@ -16,7 +16,7 @@
         <v-btn class="info">Валидация</v-btn>
      </router-link>
      <!-- <v-btn class="info" @click="fillData()">Randomize</v-btn> -->
-    <bar-chart :chart-data="datacollection"></bar-chart>
+    <bar-chart :chart-data="datacollection" :options="options"></bar-chart>
     <v-card>
 
       <pre>{{arrayOfNumber}}</pre>
@@ -37,6 +37,17 @@
       return {
         datacollection: null,
         number: '',
+        options: {  scales: {
+          yAxes: [{
+            ticks: {
+               min: 0,           
+              max: 30,
+              // callback: (value, index, values) => {
+              //   return `£ ${value} ${this.currency}`;
+              // },
+            },
+          }],
+        }},
          datasets: [
             {
               label: 'f',
@@ -155,6 +166,218 @@
               backgroundColor: '#1a12fa',
               data: [this.getRandomInt()]
             },
+             {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+             {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+             {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            }, {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
+              {
+              label: 'f',
+              backgroundColor: '#1a12fa',
+              data: [this.getRandomInt()]
+            },
           ],
         arrayOfNumber: [],
         counter: 0,
@@ -168,7 +391,8 @@
     fillData () {
         this.datacollection = {
           labels: ['Временной ряд'],
-          datasets: this.datasets
+          datasets: this.datasets,
+          
         }
       },
     randomColor() {

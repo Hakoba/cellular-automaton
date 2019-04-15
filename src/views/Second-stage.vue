@@ -14,7 +14,7 @@
     </v-card>
      <!-- <v-btn class="info" @click="addColumn()">Add column</v-btn> -->
      <!-- <v-btn class="info" @click="fillData()">Randomize</v-btn> -->
-    <bar-chart :chart-data="datacollection"></bar-chart>
+    <bar-chart :chart-data="datacollection" :options='options'></bar-chart>
     <validation :data='datasets'/>
     <v-card>
      <!-- <v-btn class="info" @click="lmh()">Найти</v-btn> -->
@@ -33,7 +33,18 @@
     data(){
       return{
          datacollection: null,
-        datasets: []
+        datasets: [],
+        options: {  scales: {
+          yAxes: [{
+            ticks: {
+               min: 0,           
+              max: 30,
+              // callback: (value, index, values) => {
+              //   return `£ ${value} ${this.currency}`;
+              // },
+            },
+          }],
+        }},
       }
     }
     ,
@@ -43,7 +54,7 @@
      this.datasets = this.$store.state.mainArr.map( elem => {
      return elem = {
         label: `Число №${elem.serialNumber}`,
-        backgroundColor: (elem.type=='high')?'rgb(241, 38, 214)': (elem.type=='middle')? 'rgb(228, 186, 0)':'rgb(17, 14, 2)',
+        backgroundColor: (elem.type=='high')?'rgb(10, 200, 11)': (elem.type=='middle')? 'rgb(200, 200, 11)':'rgb(200, 10, 11)',
         data: [elem.item]
       }
     })

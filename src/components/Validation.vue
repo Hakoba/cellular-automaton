@@ -2,8 +2,8 @@
 <!-- Верефикация а не  валидация жиесть -->
   <v-card>
     <!-- <pre>{{mainArr}}</pre> -->
-    <pre>{{validArray}}</pre>
-    <table></table>
+    <!-- <pre>{{validArray}}</pre> -->
+  
   </v-card>
 </template>
 <script>
@@ -54,9 +54,10 @@ export default {
       // return this.mainArr.map(elem => elem = elem.type)
       // console.log('data',this.data)
       let some = this.$store.state.mainArr.map(elem => (elem = elem.type));
-      console.log('some',some)
+      // console.log('some',some)
       let adaptiveArray = ["low", "middle", "high"]; // массив с параметрами, будет дополнятся
-      let levelArray = []; // объект в который будут собираться все параметры данной хуйни 
+      let catchMap = new Map();
+      //let levelArray = new Array; // объект в который будут собираться все параметры данной хуйни 
       for (const item in adaptiveArray) {
         let returnedObj;
         let low = 0;
@@ -83,36 +84,51 @@ export default {
         returnedObj = {
           toLow: low,
           toMiddle: middle,
-          tiHigh: high
+          toHigh: high
         };
+        catchMap.set(
+          adaptiveArray[item], returnedObj
+        )
         // console.log(`dats arr - ${returnedObj}`);
-          levelArray = [
-              ...levelArray,
-              returnedObj,
-          ]
+          // levelArray = [
+          //     ...levelArray,
+          //     returnedObj,
+          // ]
       }
-        this.validArray = {
-          first: levelArray
-
-        }
+      // console.log(catchMap,catchMap.get('low'),catchMap.keys()[0],catchMap.values())
+        this.validArray = [
+          // first: levelArray
+          catchMap
+        ]
+        this.MoveToNewConfiguration()
       
     },
     MoveToNewConfiguration(){
-    let newConf = this.validArray[length-1].map(obj => {
-        for (const elem of obj) {
-           for (const type of elem) {
-            //  if(type == )
-           }
-          //крч, конкатить к названи итема оъекта тайп обрабатываемой итерации, а дальше логика 93 строчки и  функции newArr(). вотъ
-          //while obj type!=0 то хуячить. 
+        // console.log(this.validArray[length-1].entries())
+        //  for(let i = 0; i <= this.validArray[length-1]; i++){
+        //  }
+        const lastMap = this.validArray[length-1].entries()
+
+        for (const arr of lastMap) {
+          //проверка на то продолжать ли увеличивать конфигурацию с этой моделью 
+       let itertator = 0;
+       arr[1].toLow != 0 ? itertator++ : false;
+       arr[1].toMiddle != 0 ? itertator++ : false;
+       arr[1].toHigh != 0 ? itertator++ : false;  
+        // console.log(itertator)
+          if(itertator != 1){
+            let newCh = `${arr[0]}|${d}`
+          }
         }
-      })
+        
     }
   },
   mounted() {
     this.newArr()
+    
   }
 };
+
 </script>
 
 <style lang="scss">
