@@ -1,7 +1,10 @@
-import { Bar, mixins } from 'vue-chartjs'
+import { Bar, mixins, Line } from 'vue-chartjs'
 const { reactiveProp } = mixins
 export default {
+  
   extends: Bar,
+  responsive: false,
+  // maintainAspectRatio: false,
   scales: {
     xAxes: [{
       gridLines: {
@@ -33,6 +36,11 @@ export default {
     }
   },
   mounted () {
+    Chart.defaults.global.legend.display = false;
+    // Chart.canvas.parentNode.style.height = '600px';
+    // Chart.canvas.parentNode.style.width = '300px'; 
+     
+    console.log('chart',Chart.canvas)
     this.renderChart(this.chartData, this.opt)
     
 }

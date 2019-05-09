@@ -1,8 +1,8 @@
 <template>
-  <div class="small">
+  <div >
       <h1>Второй шаг</h1>
-    <v-card>
-     <v-btn class="info"><router-link to="/">Назад</router-link></v-btn>
+    <v-card class="small">
+    <router-link to="/"> <v-btn class="info">Назад</v-btn></router-link>
     <!-- <validation :datasets='datasets'></validation> -->
       
        <!-- <v-text-field
@@ -14,7 +14,7 @@
     </v-card>
      <!-- <v-btn class="info" @click="addColumn()">Add column</v-btn> -->
      <!-- <v-btn class="info" @click="fillData()">Randomize</v-btn> -->
-    <bar-chart :chart-data="datacollection" :options='options'></bar-chart>
+    <bar-chart class="small" :chart-data="datacollection" :options='options'></bar-chart>
     <validation :data='datasets'/>
     <v-card>
      <!-- <v-btn class="info" @click="lmh()">Найти</v-btn> -->
@@ -54,7 +54,7 @@
      this.datasets = this.$store.state.mainArr.map( elem => {
      return elem = {
         label: `Число №${elem.serialNumber}`,
-        backgroundColor: (elem.type=='high')?'rgb(10, 200, 11)': (elem.type=='middle')? 'rgb(200, 200, 11)':'rgb(200, 10, 11)',
+        backgroundColor: (elem.type=='h')?'rgb(10, 200, 11)': (elem.type=='m')? 'rgb(200, 200, 11)':'rgb(200, 10, 11)',
         data: [elem.item]
       }
     })

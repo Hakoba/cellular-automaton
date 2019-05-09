@@ -1,136 +1,233 @@
 <template>
-<!-- Верефикация а не  валидация жиесть -->
-  <v-card>
-    <!-- <pre>{{mainArr}}</pre> -->
-    <!-- <pre>{{validArray}}</pre> -->
-  
-  </v-card>
+  <!-- Верефикация а не  валидация жиесть -->
+  <div>
+     <v-tooltip class="small" bottom>
+        <template v-slot:activator="{ on }">
+    <v-btn  v-on="on" @click="fart()">ТЫк</v-btn>
+     </template>
+    <span>Если вдрг не заработало, должно починиться</span>
+    </v-tooltip>
+    <v-container grid-list-md text-xs-center v-for="(items,index) in validArray" :key="index">
+      <h2>Конфиурация № {{validArray.length - index}}</h2> 
+      <v-layout row wrap >
+        <!-- <v-flex xs3 > -->
+           
+          
+          <v-flex xs12 sm6 md4 lg3 xlg2 class="mb-3"  v-for="(item, key) of items" :key="key">
+            <v-card>
+            <table>
+              <tr>
+                <th>Переход из</th>
+                <th>Переход в</th>
+                <th>колл-во переходов</th>
+              </tr>
+              <tr>
+                <td rowspan="4">{{item[0]}}</td>
+              </tr>
+              <tr v-for="(elem,i) in item[1]" :key="i">
+                <td>{{i}}</td>
+                <td>{{elem}}</td>
+              </tr>
+              <tr style="border-top: 2px solid #6678b1 ">
+                <td style="color: #039;">всего переходов</td>
+                <td colspan="2">{{allMoves(item[1])}}</td>
+              </tr>
+            </table> 
+            
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+       <v-snackbar
+      v-model="snackbar"
+      :timeout="timeout"
+      :bottom="y === 'bottom'"
+      :vertical="mode === 'vertical'"
+    >
+        Если все еще не заработало, то хз.
+      <v-btn
+        color="pink"
+        flat
+        @click="snackbar = false"
+      >
+        Закрыть
+      </v-btn>
+    </v-snackbar>
+  </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      // mainArr: [
-      //   {
-      //     item: 2,
-      //     type: "low",
-      //     serialNumber: 0
-      //   },
-      //   {
-      //     item: 9,
-      //     type: "high",
-      //     serialNumber: 1
-      //   },
-      //   {
-      //     item: 5,
-      //     type: "middle",
-      //     serialNumber: 2
-      //   },
-      //   {
-      //     item: 10,
-      //     type: "high",
-      //     serialNumber: 4
-      //   },
-      //   {
-      //     item: 1,
-      //     type: "low",
-      //     serialNumber: 3
-      //   },
-      //   {
-      //     item: 6,
-      //     type: "middle",
-      //     serialNumber: 5
-      //   }
-      // ],
-      validArray: []
+      some: this.$store.state.mainArr.map(elem => (elem = elem.type)),
+      validArray: [],
+      snackbar: false,
+        y: 'bottom',
+        x: null,
+        mode: '',
+        timeout: 6000,
     };
   },
-  props: [
-    'data'
-  ],
+  props: ["data"],
   methods: {
-    newArr() {
-      // console.log(this.mainArr.map(elem => elem = elem.type))
-      // return this.mainArr.map(elem => elem = elem.type)
-      // console.log('data',this.data)
-      let some = this.$store.state.mainArr.map(elem => (elem = elem.type));
-      // console.log('some',some)
-      let adaptiveArray = ["low", "middle", "high"]; // массив с параметрами, будет дополнятся
+    async newArr() {
+      let some = this.some;
+      // console.log("some", some);
+      let adaptiveArray = ["l", "m", "h"]; // массив с параметрами
       let catchMap = new Map();
-      //let levelArray = new Array; // объект в который будут собираться все параметры данной хуйни 
       for (const item in adaptiveArray) {
         let returnedObj;
-        let low = 0;
-        let middle = 0;
-        let high = 0;
+        let l = 0;
+        let m = 0;
+        let h = 0;
         for (let i = 0; i <= some.length; i++) {
-          // console.log(`that observe item - ${some[i]}, adaptiveArray item - ${adaptiveArray[item]}`)
           if (some[i] == adaptiveArray[item]) {
-            switch (some[i+1]) {
-              case "low":
-                low++;
+            switch (some[i + 1]) {
+              case "l":
+                l++;
                 break;
-              case "middle":
-                middle++;
+              case "m":
+                m++;
                 break;
-              case "high":
-                high++;
+              case "h":
+                h++;
                 break;
             }
           }
-          // TODO: крч, ебануть правильную хуйню, когд делаешь норм массив DONE
         }
-        console.log(`Low: ${low}, Middle: ${middle} High ${high} `);
+        // console.log(`l: ${l}, m: ${m} h ${h} `);
         returnedObj = {
-          toLow: low,
-          toMiddle: middle,
-          toHigh: high
+          l: l,
+          m: m,
+          h: h
         };
-        catchMap.set(
-          adaptiveArray[item], returnedObj
-        )
-        // console.log(`dats arr - ${returnedObj}`);
-          // levelArray = [
-          //     ...levelArray,
-          //     returnedObj,
-          // ]
+        catchMap.set(adaptiveArray[item], returnedObj);
       }
-      // console.log(catchMap,catchMap.get('low'),catchMap.keys()[0],catchMap.values())
-        this.validArray = [
-          // first: levelArray
-          catchMap
-        ]
-        this.MoveToNewConfiguration()
-      
+      this.validArray = await [catchMap];
+      this.MoveToNewConfiguration();
     },
-    MoveToNewConfiguration(){
-        // console.log(this.validArray[length-1].entries())
-        //  for(let i = 0; i <= this.validArray[length-1]; i++){
-        //  }
-        const lastMap = this.validArray[length-1].entries()
-
+    fart(){
+      this.MoveToNewConfiguration(); 
+      this.snackbar = true;
+    },
+    MoveToNewConfiguration() {
+      const lastMap = this.validArray[length - 1].entries();
+      // console.log('lm  ',this.validArray[length - 1].size )
+      if (this.validArray[length - 1].size != 0) {
+        // console.log(
+        //   `Начало работы с конфигурацией № ${this.validArray.length + 1}`
+        // );
+        let catchMap = new Map();
+        let rate = ["l", "m", "h"];
         for (const arr of lastMap) {
-          //проверка на то продолжать ли увеличивать конфигурацию с этой моделью 
-       let itertator = 0;
-       arr[1].toLow != 0 ? itertator++ : false;
-       arr[1].toMiddle != 0 ? itertator++ : false;
-       arr[1].toHigh != 0 ? itertator++ : false;  
-        // console.log(itertator)
-          if(itertator != 1){
-            let newCh = `${arr[0]}|${d}`
+          //проверка на то продолжать ли увеличивать конфигурацию с этой моделью
+          let itertator = 0;
+          let overlook = [];
+
+          arr[1].l != 0 ? itertator++ : overlook.push("l");
+          arr[1].m != 0 ? itertator++ : overlook.push("m");
+          arr[1].h != 0 ? itertator++ : overlook.push("h");
+          // console.log(arr[1], '  ', overlook);
+          if (itertator != 1) {
+            for (let i = 0; i < rate.length; i++) {
+              let element = rate[i];
+              if (overlook.indexOf(element) == -1) {
+                let newCH = `${arr[0]}${element}`;
+                let returnedObj;
+                let l = 0;
+                let m = 0;
+                let h = 0;
+                //пиздец хуйню пишу
+                let some = this.some.join("");
+                let lengthOfNewCH = newCH.length;
+                let regexp = new RegExp(newCH, "g");
+                let errorCheck = false;
+                //  console.log('newch',newCH)
+                let lengthOfDeep = some.match(regexp);
+                if (lengthOfDeep != null) {
+                  lengthOfDeep = lengthOfDeep.length;
+                  for (let i = 0; i < lengthOfDeep; i++) {
+                    // ll => llm,lll,llh
+                    let index = some.search(regexp);
+                    some = some.split("");
+                    some.splice(index, lengthOfNewCH);
+                    some = some.join(""); // если все в одну строку через точку писать, то все ловмается, хотя все рвно говнокод, убейте меня
+                    switch (some[index]) {
+                      case "l":
+                        l++;
+                        break;
+                      case "m":
+                        m++;
+                        break;
+                      case "h":
+                        h++;
+                        break;
+                    }
+                  }
+                  // console.log(`CH = ${newCH} => l: ${l}, m: ${m} h ${h} `);
+                  returnedObj = {
+                    l: l,
+                    m: m,
+                    h: h
+                  };
+                  catchMap.set(newCH, returnedObj);
+                }
+              }
+            }
           }
         }
-        
+        this.validArray = [catchMap, ...this.validArray];
+        this.MoveToNewConfiguration();
+      } else {
+        this.validArray.shift();
+        // console.log(
+        //   `Максимальный уовень конфигурации: ${this.validArray.length}`
+        // );
+        // console.log(Array.from(this.validArray[0]))
+        let finalArray = new Array();
+        for (let i = 0; i < this.validArray.length; i++) {
+          finalArray.push(Array.from(this.validArray[i]));
+        }
+        this.validArray = finalArray;
+      }
+    },
+    allMoves(o) {
+      return Object.keys(o).reduce(function(previous, key) {
+        return previous + o[key];
+      }, 0);
     }
   },
+
   mounted() {
-    this.newArr()
-    
+    this.newArr();
   }
 };
-
 </script>
 
 <style lang="scss">
+table {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-size: 14px;
+  background: white;
+  // max-width: 200px;
+  display: inline;
+  border-collapse: collapse;
+  text-align: center;
+  margin-bottom: 2em;
+}
+th {
+  font-weight: normal;
+  color: #039;
+  border-bottom: 2px solid #6678b1;
+  padding: 10px 8px;
+}
+td {
+  color: #669;
+  padding: 9px 8px;
+  transition: 0.3s linear;
+}
+tr:hover td {
+  color: #6699ff;
+}
 </style>
 

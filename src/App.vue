@@ -34,3 +34,11 @@ export default {
   }
 }
 </script>
+<style>
+canvas{
+
+  /* width:600px !important;*/
+  height:400px !important; 
+
+}
+</style>

@@ -412,14 +412,14 @@
      
        if(item <= max-average && item >= +min+average ){
 
-         this.finalArray.push({item,type:'middle',serialNumber: cntr})
+         this.finalArray.push({item,type:'m',serialNumber: cntr})
 
        }
        else if (item <= +min+average ){
-         this.finalArray.push({item, type:'low',serialNumber: cntr})
+         this.finalArray.push({item, type:'l',serialNumber: cntr})
        }
        else{
-         this.finalArray.push({item,type:'high',serialNumber: cntr})
+         this.finalArray.push({item,type:'h',serialNumber: cntr})
        }
          cntr++;
      }
