@@ -2,8 +2,8 @@
   <!-- Верефикация а не  валидация жиесть -->
   <div>
      <v-tooltip class="small" bottom>
-        <template v-slot:activator="{ on }">
-    <v-btn  v-on="on" @click="fart()">ТЫк</v-btn>
+        <template class=" ml-5" v-slot:activator="{ on }">
+             <v-btn  v-on="on" @click="fart()">ТЫк</v-btn>
      </template>
     <span>Если вдрг не заработало, должно починиться</span>
     </v-tooltip>

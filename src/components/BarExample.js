@@ -3,24 +3,7 @@ const { reactiveProp } = mixins
 export default {
   
   extends: Bar,
-  responsive: false,
-  // maintainAspectRatio: false,
-  scales: {
-    xAxes: [{
-      gridLines: {
-        display: true
-      }
-    }],
-    yAxes: [{
-      gridLines: {
-        display: true
-      },
-      ticks: {
-      min: 0,           
-      max: 100,
-      }
-    }]
-  },
+   
   mixins: [reactiveProp],
   props: ['options'],
   data() {
@@ -40,7 +23,7 @@ export default {
     // Chart.canvas.parentNode.style.height = '600px';
     // Chart.canvas.parentNode.style.width = '300px'; 
      
-    console.log('chart',Chart.canvas)
+    // console.log('chart',Chart.canvas)
     this.renderChart(this.chartData, this.opt)
     
 }
