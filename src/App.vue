@@ -8,10 +8,10 @@
       <v-spacer></v-spacer>
       <v-btn
         flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        href="https://github.com/Hakoba/cellular-automaton.git"
         target="_blank"
       >
-        <span class="mr-2">v(0.0.1)</span>
+        <span class="mr-2">v(0.9.5)</span>
       </v-btn>
     </v-toolbar>
 
