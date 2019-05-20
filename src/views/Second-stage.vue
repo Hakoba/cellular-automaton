@@ -1,10 +1,14 @@
 <template>
   <div>
-    <h1>Второй шаг</h1>
+    <h1>Второй шаг: верификация</h1>
     <v-card class="small">
       <router-link to="/">
         <v-btn class="info">Назад</v-btn>
       </router-link>
+       <router-link to="/third">
+        <v-btn class="warning">вперед</v-btn>
+      </router-link>
+    </v-card>
       <!-- <validation :datasets='datasets'></validation> -->
 
       <!-- <v-text-field
@@ -13,14 +17,13 @@
             label="Введите число"
       ></v-text-field>-->
       <!-- <pre>{{$store.state.mainArr}}</pre> -->
-    </v-card>
+   
     <!-- <v-btn class="info" @click="addColumn()">Add column</v-btn> -->
     <!-- <v-btn class="info" @click="fillData()">Randomize</v-btn> -->
     <bar-chart :chart-data="datacollection" class="small" :options="options"></bar-chart>
     <validation :data="datasets"/>
-    <v-card>
-      <!-- <v-btn class="info" @click="lmh()">Найти</v-btn> -->
-    </v-card>
+    <!-- <v-card>
+    </v-card> -->
   </div>
 </template>
 <script>
@@ -62,7 +65,7 @@ export default {
   beforeMount() {
     this.datasets = this.$store.state.mainArr.map(elem => {
       return (elem = {
-        label: `Число №${elem.serialNumber}`,
+        label: `Число номер: ${elem.serialNumber+1}, Значение`,
         backgroundColor:
           elem.type == "h"
             ? "rgb(10, 200, 11)"

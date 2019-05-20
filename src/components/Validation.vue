@@ -7,6 +7,12 @@
      </template>
     <span>Если вдрг не заработало, должно починиться</span>
     </v-tooltip>
+     <v-tooltip class="small" bottom>
+        <template class=" ml-5" v-slot:activator="{ on }">
+             <v-btn  v-on="on" @click="saveChanges()">валидация</v-btn>
+     </template>
+    <span>Переход на валидацию</span>
+    </v-tooltip>
     <v-container grid-list-md text-xs-center v-for="(items,index) in validArray" :key="index">
       <h2>Конфиурация № {{validArray.length - index}}</h2> 
       <v-layout row wrap >
@@ -61,6 +67,7 @@ export default {
     return {
       some: this.$store.state.mainArr.map(elem => (elem = elem.type)),
       validArray: [],
+      verArray: null,
       snackbar: false,
         y: 'bottom',
         x: null,
@@ -110,6 +117,11 @@ export default {
       this.MoveToNewConfiguration(); 
       this.snackbar = true;
     },
+    saveChanges(){
+      this.$store.commit('setVerificArray', this.verArray)
+      this.$store.commit('setDeep', this.validArray.length)
+      this.$router.push('/third');
+    },
     MoveToNewConfiguration() {
       const lastMap = this.validArray[length - 1].entries();
       // console.log('lm  ',this.validArray[length - 1].size )
@@ -123,12 +135,11 @@ export default {
           //проверка на то продолжать ли увеличивать конфигурацию с этой моделью
           let itertator = 0;
           let overlook = [];
-
           arr[1].l != 0 ? itertator++ : overlook.push("l");
           arr[1].m != 0 ? itertator++ : overlook.push("m");
           arr[1].h != 0 ? itertator++ : overlook.push("h");
           // console.log(arr[1], '  ', overlook);
-          if (itertator != 1) {
+          if (itertator != 1 && itertator != 0) {
             for (let i = 0; i < rate.length; i++) {
               let element = rate[i];
               if (overlook.indexOf(element) == -1) {
@@ -170,12 +181,16 @@ export default {
                     m: m,
                     h: h
                   };
+                  if(returnedObj.l + returnedObj.m + returnedObj.h != 0){
                   catchMap.set(newCH, returnedObj);
+                  }
+                  
                 }
               }
             }
           }
         }
+        
         this.validArray = [catchMap, ...this.validArray];
         this.MoveToNewConfiguration();
       } else {
@@ -185,6 +200,7 @@ export default {
         // );
         // console.log(Array.from(this.validArray[0]))
         let finalArray = new Array();
+        this.verArray = this.validArray;
         for (let i = 0; i < this.validArray.length; i++) {
           finalArray.push(Array.from(this.validArray[i]));
         }
@@ -197,7 +213,6 @@ export default {
       }, 0);
     }
   },
-
   mounted() {
     this.newArr();
   }
@@ -230,4 +245,3 @@ tr:hover td {
   color: #6699ff;
 }
 </style>
-

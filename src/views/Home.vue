@@ -70,373 +70,373 @@ export default {
         },
       },
       datasets: [],
-      datasetsEx: [
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        },
-        {
-          label: "f",
-          backgroundColor: "#1a12fa",
-          data: [this.getRandomInt()]
-        }
-      ],
+     // datasetsEx: [
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   },
+      //   {
+      //     label: "f",
+      //     backgroundColor: "#1a12fa",
+      //     data: [this.getRandomInt()]
+      //   }
+      // ],
       arrayOfNumber: [],
       counter: 0,
       finalArray: []
@@ -453,8 +453,18 @@ export default {
       };
     },
     fillRandomData(){
-      this.datasets = this.datasetsEx;
-      this.fillData();
+      for (let i = 0; i < 60; i++) {
+          this.datasets.push(
+        {
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [this.getRandomInt()]
+        },
+      )
+        this.fillData();
+       
+      }
+      
     },
     randomColor() {
       let x = Math.floor(Math.random() * 256);
