@@ -11,8 +11,12 @@
         </router-link>
       </v-card>
     </v-layout>
+    <v-card></v-card>
     <v-card class="mb-4">
-       <h3>{{getPercent}}</h3>
+       <!-- <h3>{{getPercent}}</h3> -->
+       <h3> Угаданно: {{correctness.true}}шт, Не угадано {{correctness.false}}<br>
+       Процент ошибки:{{correctness.error}};
+       Процент угаданных штук:{{correctness.percent}}; </h3>
       <table>
         <tr>
          
@@ -39,24 +43,27 @@ export default {
       deep: this.$store.state.deep,
       validArray: [],
       counter: 0,
-      boolArray: []
+      boolArray: [],
+      correctness: {} 
     };
   },
   computed: {
-    getPercent() {
+   
+  },
+  methods: {
+     getPercent() {
      let correctnessArray = this.boolArray.reduce(function(acc, el) {
         acc[el] = (acc[el] || 0) + 1;
         return acc;
       }, {});
         correctnessArray = {
-          percent: correctnessArray.true*100/(correctnessArray.true+correctnessArray.false)
+          percent: (correctnessArray.true*100/(correctnessArray.true+correctnessArray.false)).toFixed(3),
+          error: (100-correctnessArray.true*100/(correctnessArray.true+correctnessArray.false)).toFixed(3)
           ,
           ...correctnessArray
         }
-      return correctnessArray
-    }
-  },
-  methods: {
+     this.correctness = correctnessArray
+    },
     findBlah() {
       let mainObj = this.mainArray;
       let verArray = this.verArray;
@@ -147,6 +154,7 @@ export default {
 
       if (this.counter == this.mainArray.length || this.counter <= this.deep) {
         // this.mainArray.pop()
+        this.getPercent()
         return {
           // counter: this.counter,
           l: (low / summ).toFixed(3),
@@ -190,9 +198,9 @@ export default {
         }
 
         return {
-          l: low / summ,
-          m: middle / summ,
-          h: high / summ,
+          l: (low / summ).toFixed(3),
+          m: (middle / summ).toFixed(3),
+          h: (high / summ).toFixed(3),
           bool: bool
         };
       }
