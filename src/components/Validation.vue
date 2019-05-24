@@ -1,6 +1,7 @@
 <template>
   <!-- Верефикация а не  валидация жиесть -->
   <div>
+    <div style="padding: 0 20%">
      <v-tooltip class="small" bottom>
         <template class=" ml-5" v-slot:activator="{ on }">
              <v-btn  v-on="on" @click="fart()">ТЫк</v-btn>
@@ -9,16 +10,15 @@
     </v-tooltip>
      <v-tooltip class="small" bottom>
         <template class=" ml-5" v-slot:activator="{ on }">
-             <v-btn  v-on="on" @click="saveChanges()">валидация</v-btn>
+             <v-btn class="warning" v-on="on" @click="saveChanges()">валидация</v-btn>
      </template>
     <span>Переход на валидацию</span>
     </v-tooltip>
+    </div>
     <v-container grid-list-md text-xs-center v-for="(items,index) in validArray" :key="index">
-      <h2>Конфиурация № {{validArray.length - index}}</h2> 
+      <h2>Конфиурация № {{ index+1}}</h2> 
       <v-layout row wrap >
         <!-- <v-flex xs3 > -->
-           
-          
           <v-flex xs12 sm6 md4 lg3 xlg2 class="mb-3"  v-for="(item, key) of items" :key="key">
             <v-card>
             <table>
@@ -204,7 +204,8 @@ export default {
         for (let i = 0; i < this.validArray.length; i++) {
           finalArray.push(Array.from(this.validArray[i]));
         }
-        this.validArray = finalArray;
+        this.validArray = finalArray.reverse();
+        
       }
     },
     allMoves(o) {

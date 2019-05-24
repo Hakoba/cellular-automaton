@@ -6,7 +6,7 @@
         <v-btn class="info">Назад</v-btn>
       </router-link>
        <router-link to="/third">
-        <v-btn class="warning">вперед</v-btn>
+        <!-- <v-btn class="warning">вперед</v-btn> -->
       </router-link>
     </v-card>
       <!-- <validation :datasets='datasets'></validation> -->

@@ -11,8 +11,13 @@
         </router-link>
       </v-card>
     </v-layout>
+    <v-card></v-card>
     <v-card class="mb-4">
-       <h3>{{getPercent}}</h3>
+       <!-- <h3>{{getPercent}}</h3> -->
+       <h3> 
+
+       Процент ошибки:{{correctness.error}}; Не угадано {{correctness.false}}<br>
+       Процент угаданных штук:{{correctness.percent}}; Угаданно: {{correctness.true}}шт </h3>
       <table>
         <tr>
          
@@ -21,7 +26,7 @@
           <th>High</th>
            <th>Type</th>
         </tr>
-        <tr v-for="(item,index) in validArray" class="access" :class="{wrong: !item.bool}" :key="index">
+        <tr v-for="(item,index) in validArray" class="access" :class="{wrong: !item.bool}" @click="changeBool(item)" :key="index">
           <td v-for="(elem,index) in item" :key="index">{{elem}}</td>
         </tr>
       </table>
@@ -39,165 +44,174 @@ export default {
       deep: this.$store.state.deep,
       validArray: [],
       counter: 0,
-      boolArray: []
+      boolArray: [],
+      correctness: {} 
     };
   },
   computed: {
-    getPercent() {
-     let correctnessArray = this.boolArray.reduce(function(acc, el) {
-        acc[el] = (acc[el] || 0) + 1;
-        return acc;
-      }, {});
-        correctnessArray = {
-          percent: correctnessArray.true*100/(correctnessArray.true+correctnessArray.false)
-          ,
-          ...correctnessArray
-        }
-      return correctnessArray
-    }
+  
   },
-  methods: {
-    findBlah() {
-      let mainObj = this.mainArray;
-      let verArray = this.verArray;
-      //  verArray = verArray.reverse();
-      let deep = this.deep;
-      let str = mainObj[length - 1];
-      let mainArray = new Array();
-      let mainArraySec = new Array();
-      for (let i = 0; i < mainObj.length; i++) {
-        mainArray.push(mainObj[i].type);
-        mainArraySec.push(mainObj[i].type);
-      }
-      this.counter = mainArray.length;
-      this.mainArray = mainArraySec;
-      console.log(
-        this.mainArray,
-        "Marr --------------------",
-        this.counter,
-        this.mainArray.length
-      );
-      let MALength = mainArray.length;
-      //  console.log(`MALength ${MALength}, deep ${deep}`)
-      let counter = 0;
-      //  for (let index = 0; index < 7; index++) {
-
-      for (let index = 0; index < MALength; index++) {
-        let lastTypes = [];
-        counter++;
-        lastTypes = mainArray.slice(-deep);
-        mainArray.pop();
-        let toLow = [],
-          toMiddle = [],
-          toHigh = [],
-          l = null,
-          m = null,
-          h = null;
-        for (let i = 1; i <= lastTypes.length; i++) {
-          //выводим последние элементs
-          let types = lastTypes.slice(-i).join("");
-          let map = verArray[verArray.length - i];
-          // console.log(map, types)
-          if (map.has(types)) {
-            let cases = map.get(types); // это крч, l m h со значениеями от даннго types
-            // console.log('kek')
-            let sum = cases.l + cases.m + cases.h;
-
-            toLow.push(cases.l / sum);
-            toMiddle.push(cases.m / sum);
-            toHigh.push(cases.h / sum);
-            // console.log('cases: ', cases )
-          } else {
-            console.error(
-              "error, dats table isn't exist, it's normal -- calm down!"
-            );
-            //  return null
-          }
-        }
-        // console.log(toLow,toMiddle,toHigh)
-        // console.log('counter: ', counter)
-
-        let forecast = this.makeForecast(toLow, toMiddle, toHigh);
-        // console.log('arrays: ', forecast)
-        this.counter--;
-        this.validArray.push(forecast);
-        // this.mainArray.pop()
-
-        //
-      }
-      return this.validArray;
+    methods: {
+      changeBool(item){
+      console.log(item.bool)
+      item.bool = !item.bool
+      this.getPercent()
     },
-    makeForecast(l, m, h) {
-      let low = 0,
-        middle = 0,
-        high = 0;
-      // console.log(this.deep)
-      for (let index = 0; index < l.length; index++) {
-        let sum = l[index] + m[index] + h[index];
-        low = low + l[index];
-        middle += m[index];
-        high += h[index];
-        // console.log(`low: ${low}, middle:${middle}, high: ${high} --  l = ${l[index]}, m = ${m[index]} h = ${h[index]}-- sum = ${sum}`)
-      }
-      let summ = low + middle + high;
-      // if (this.counter != ) {
-
-      // }
-      // console.log(this.mainArray.length+1, this.counter)
-
-      if (this.counter == this.mainArray.length || this.counter <= this.deep) {
-        // this.mainArray.pop()
-        return {
-          // counter: this.counter,
-          l: (low / summ).toFixed(3),
-          m: (middle / summ).toFixed(3),
-          h: (high / summ).toFixed(3),
-          bool: "kek"
-        };
-      } else {
-        let l = low / summ,
-          m = middle / summ,
-          h = high / summ;
-        let bool = new Boolean();
-
-        let maximum = Math.max(l, m, h);
-
-        switch (maximum) {
-          case l:
-            maximum = "l";
-            break;
-          case m:
-            maximum = "m";
-            break;
-          case h:
-            maximum = "h";
-            break;
+      getPercent() {
+      let correctnessArray = this.boolArray.reduce(function(acc, el) {
+          acc[el] = (acc[el] || 0) + 1;
+          return acc;
+        }, {});
+          correctnessArray = {
+            percent: (correctnessArray.true*100/(correctnessArray.true+correctnessArray.false)).toFixed(3),
+            error: (100-correctnessArray.true*100/(correctnessArray.true+correctnessArray.false)).toFixed(3)
+            ,
+            ...correctnessArray
+          }
+      this.correctness = correctnessArray
+      },
+      findBlah() {
+        let mainObj = this.mainArray;
+        let verArray = this.verArray;
+        //  verArray = verArray.reverse();
+        let deep = this.deep;
+        let str = mainObj[length - 1];
+        let mainArray = new Array();
+        let mainArraySec = new Array();
+        for (let i = 0; i < mainObj.length; i++) {
+          mainArray.push(mainObj[i].type);
+          mainArraySec.push(mainObj[i].type);
         }
+        this.counter = mainArray.length;
+        this.mainArray = mainArraySec;
         console.log(
-          "maximum: ",
-          maximum,
-          ",  mainArray{index}: ",
-          this.mainArray[this.counter],
-          this.counter
+          this.mainArray,
+          "Marr --------------------",
+          this.counter,
+          this.mainArray.length
         );
-        maximum == this.mainArray[this.counter]
-          ? (bool = true)
-          : (bool = false);
-        if (bool == true) {
-          this.boolArray.push(true);
-        } else {
-          this.boolArray.push(false);
-        }
+        let MALength = mainArray.length;
+        //  console.log(`MALength ${MALength}, deep ${deep}`)
+        let counter = 0;
+        //  for (let index = 0; index < 7; index++) {
 
-        return {
-          l: low / summ,
-          m: middle / summ,
-          h: high / summ,
-          bool: bool
-        };
+        for (let index = 0; index < MALength; index++) {
+          let lastTypes = [];
+          counter++;
+          lastTypes = mainArray.slice(-deep);
+          mainArray.pop();
+          let toLow = [],
+            toMiddle = [],
+            toHigh = [],
+            l = null,
+            m = null,
+            h = null;
+          for (let i = 1; i <= lastTypes.length; i++) {
+            //выводим последние элементs
+            let types = lastTypes.slice(-i).join("");
+            let map = verArray[verArray.length - i];
+            // console.log(map, types)
+            if (map.has(types)) {
+              let cases = map.get(types); // это крч, l m h со значениеями от даннго types
+              // console.log('kek')
+              let sum = cases.l + cases.m + cases.h;
+
+              toLow.push(cases.l / sum);
+              toMiddle.push(cases.m / sum);
+              toHigh.push(cases.h / sum);
+              // console.log('cases: ', cases )
+            } else {
+              console.error(
+                "error, dats table isn't exist, it's normal -- calm down!"
+              );
+              //  return null
+            }
+          }
+          // console.log(toLow,toMiddle,toHigh)
+          // console.log('counter: ', counter)
+
+          let forecast = this.makeForecast(toLow, toMiddle, toHigh);
+          // console.log('arrays: ', forecast)
+          this.counter--;
+          this.validArray.push(forecast);
+          // this.mainArray.pop()
+
+          //
+        }
+        return this.validArray;
+      },
+      makeForecast(l, m, h) {
+        let low = 0,
+          middle = 0,
+          high = 0;
+        // console.log(this.deep)
+        for (let index = 0; index < l.length; index++) {
+          let sum = l[index] + m[index] + h[index];
+          low = low + l[index];
+          middle += m[index];
+          high += h[index];
+          // console.log(`low: ${low}, middle:${middle}, high: ${high} --  l = ${l[index]}, m = ${m[index]} h = ${h[index]}-- sum = ${sum}`)
+        }
+        let summ = low + middle + high;
+        // if (this.counter != ) {
+
+        // }
+        // console.log(this.mainArray.length+1, this.counter)
+
+        if (this.counter == this.mainArray.length || this.counter <= this.deep) {
+          // this.mainArray.pop()
+          this.getPercent()
+          return {
+            // counter: this.counter,
+            l: (low / summ).toFixed(3),
+            m: (middle / summ).toFixed(3),
+            h: (high / summ).toFixed(3),
+            bool: "kek"
+          };
+        } else {
+          let l = low / summ,
+            m = middle / summ,
+            h = high / summ;
+          let bool = new Boolean();
+
+          let maximum = Math.max(l, m, h);
+
+          switch (maximum) {
+            case l:
+              maximum = "l";
+              break;
+            case m:
+              maximum = "m";
+              break;
+            case h:
+              maximum = "h";
+              break;
+          }
+          console.log(
+            "maximum: ",
+            maximum,
+            ",  mainArray{index}: ",
+            this.mainArray[this.counter],
+            this.counter
+          );
+          maximum == this.mainArray[this.counter]
+            ? (bool = true)
+            : (bool = false);
+          if (bool == true) {
+            this.boolArray.push(true);
+          } else {
+            this.boolArray.push(false);
+          }
+
+          return {
+            l: (low / summ).toFixed(3),
+            m: (middle / summ).toFixed(3),
+            h: (high / summ).toFixed(3),
+            bool: bool
+          };
+        }
       }
-    }
-  },
+    },
   mounted() {
     this.findBlah();
   }
