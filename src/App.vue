@@ -2,8 +2,8 @@
   <v-app>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Клеточный </span>
-        <span class="font-weight-light">Автомат</span>
+        <span>Генератор </span>
+        <span class="font-weight-light">Паролей</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
@@ -11,7 +11,7 @@
         href="https://github.com/Hakoba/cellular-automaton.git"
         target="_blank"
       >
-        <span class="mr-2">v(0.9.5)</span>
+        <span class="mr-2">v(2.2.8)</span>
       </v-btn>
     </v-toolbar>
 

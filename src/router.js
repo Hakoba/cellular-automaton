@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Second from './views/Second-stage.vue'
 import Valid from './components/Val.vue'
 import Excel from './views/Xlsx.vue'
+import Pass from './views/Pass.vue'
 Vue.use(Router)
 
 export default new Router({
