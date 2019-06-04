@@ -2,8 +2,8 @@
   <v-app>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Клеточный </span>
-        <span class="font-weight-light">Автомат</span>
+        <span>Генератор </span>
+        <span class="font-weight-light">Паролей</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn

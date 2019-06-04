@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import Pass from './views/Pass.vue'
 import Second from './views/Second-stage.vue'
 import Valid from './components/Val.vue'
 import Excel from './views/Xlsx.vue'
