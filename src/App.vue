@@ -2,19 +2,20 @@
   <v-app>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Генератор </span>
-        <span class="font-weight-light">Паролей</span>
+        <span>Игра: </span>
+        <span class="font-weight-light">Города</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
+      <router-link tag='span'to="/rules">
       <v-btn
         flat
-        href="https://github.com/Hakoba/cellular-automaton.git"
         target="_blank"
       >
-        <span class="mr-2">v(0.9.5)</span>
+        <span class="mr-2">Правила</span>
       </v-btn>
+      </router-link>
     </v-toolbar>
-
+    
     <v-content>
      <router-view></router-view>
     </v-content>

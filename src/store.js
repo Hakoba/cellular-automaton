@@ -6,13 +6,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    mainArr: [],
-    verArray: [], //массив полченный после верификации
-    deep: null,
+   
+    players: null,
   },
   mutations: {
-      setMainArr (state,payload) {
-          state.mainArr = payload
+      setPlayers (state,payload) {
+          state.players = payload
           // console.log(state.mainArr)
       },
       setVerificArray(state,payload) {

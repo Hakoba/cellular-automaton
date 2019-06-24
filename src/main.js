@@ -13,3 +13,8 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+
+// window.addEventListener('beforeinstallprompt', (e)=>{
+//   e.preventDefault();
+//   store.commit
+// })

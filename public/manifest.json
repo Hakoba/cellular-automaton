@@ -1,6 +1,6 @@
 {
-  "name": "Генератор Паролей",
-  "short_name": "PassGen",
+  "name": "Игра: Городки",
+  "short_name": "Городки",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
@@ -15,7 +15,7 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#222288"
+  "background_color": "#4040ff",
+  "theme_color": "#eeeeee"
   
 }

@@ -4,7 +4,8 @@ import Home from './views/Home.vue'
 import Pass from './views/Pass.vue'
 import Second from './views/Second-stage.vue'
 import Valid from './components/Val.vue'
-import Excel from './views/Xlsx.vue'
+import City from './views/City.vue'
+import Rules from './views/Rules.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -14,7 +15,7 @@ export default new Router({
     {
       path: '/',
      name: 'first',
-      component: Home,
+      component: Pass,
       created: () => {console.log('something')}
     },
     {
@@ -23,16 +24,21 @@ export default new Router({
       component: Second
     },
     {
+      path: '/rules',
+      name: 'rules',
+      component: Rules
+    },
+    {
+      path: '/city',
+      name: 'city',
+      component: City
+    },
+    {
       path: '/third',
       name: 'validation',
       component: Valid
     },
-    {
-      path: '/excel',
-      name: 'Excel',
-      component: Excel
-    },
-
+   
 
    
   ]
