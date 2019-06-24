@@ -3,10 +3,21 @@
     <h1>Первый Шаг</h1>
     <v-card>
       <v-text-field ref="btn" v-model="number" label="Введите число" v-on:keyup.enter="addColumn()"></v-text-field>
+<<<<<<< HEAD
        <v-btn class="info" @click="addColumn()">Add column</v-btn>
          <v-btn class="info" @click="fillRandomData()">Fill random</v-btn>
           <v-btn class="info" @click="saveInLS()">Save in local storage</v-btn>
            <v-btn class="info" @click="loadFromLS()">Load from local storage</v-btn>
+=======
+       <v-btn class="info" @click="addColumn()">Добавить значение</v-btn>
+       <v-btn class="info" @click="removeColumn()">Удалить значение</v-btn>
+       <hr>
+         <v-btn class="info" @click="fillRandomData()">Заполнить рандомными числами</v-btn>
+           <v-btn class="info" @click="fillDemas()">Заполнить данными из примера</v-btn>
+   <hr>
+           <v-btn class="info" @click="saveInLS()">Сохранить в ls</v-btn>
+           <v-btn class="info" @click="loadFromLS()">Загрузить из ls</v-btn>
+>>>>>>> 1ca5c8aee536d34d43ed4dbfbe65047e75ad5ef5
     </v-card>
     <v-card class="mb-5">
       
@@ -449,8 +460,25 @@ export default {
     this.fillData();
   },
   methods: {
+<<<<<<< HEAD
     saveInLS(){
         let kek = this.datasets;
+=======
+    removeColumn(){
+      this.datasets.pop();
+      this.fillData();
+    },
+    saveInLS(){
+        let kek = this.datasets;
+        kek = kek.map((item)=> {
+          console.log(item.backgroundColor)
+          return {
+          label: item.label,
+          backgroundColor: item.backgroundColor,
+          data: item.data
+          }
+        })
+>>>>>>> 1ca5c8aee536d34d43ed4dbfbe65047e75ad5ef5
         console.log(kek)
       // let kek = [
       //   {
@@ -474,8 +502,13 @@ export default {
       //      kef: [66]
       //   },
       // ]
+<<<<<<< HEAD
         //  let str = JSON.stringify(kek);
        localStorage.setItem('datasets', kek)
+=======
+          let str = JSON.stringify(kek);
+       localStorage.setItem('datasets', str)
+>>>>>>> 1ca5c8aee536d34d43ed4dbfbe65047e75ad5ef5
     },
     loadFromLS(){
       // this.datasets = localStorage.getItem('array')
@@ -484,11 +517,273 @@ export default {
       this.datasets = JSON.parse(item)
       this.fillData()
     },
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 1ca5c8aee536d34d43ed4dbfbe65047e75ad5ef5
     fillData() {
       this.datacollection = {
         labels: ["Временной ряд"],
         datasets: this.datasets
       };
+    },
+    fillDemas() {
+     this.datasets = [ {
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [209]
+        },
+        {
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [339]
+        },
+        {
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [0]
+        },
+        {
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [190]
+        },
+        {
+          label: "f",
+          backgroundColor: this.randomColor,
+          data:[17]
+        },
+        {
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [41]
+        },
+        {
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [93]
+        },
+        {
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [254]
+        },
+        {
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [88]
+        },
+        {
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [182]
+        },
+        {
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [141]
+        },
+       {
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [180]
+        },
+        {
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [86]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [128]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [39]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [98]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [214]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [30]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [109]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [82]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [221]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [98]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [77]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [65]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [69]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data:[65]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [271]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [47]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [146]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [159]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [91]
+        },
+        {
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [202]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [272]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [37]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [200]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [85]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [80]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [40]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [29]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [191]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [75]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [197]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [92]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [76]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [117]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [80]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [161]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [178]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [60]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [175]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [119]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [533]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [56]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [0]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [300]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [66]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data: [62]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data:[0]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data:[36]
+        },{
+          label: "f",
+          backgroundColor: this.randomColor,
+          data:[45]
+        }
+  ]
+  this.fillData();
     },
     fillRandomData(){
         // // for (let i = 0; i < 60; i++) {
