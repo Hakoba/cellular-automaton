@@ -123,27 +123,31 @@ export default {
       this.$router.push('/third');
     },
     MoveToNewConfiguration() {
-      const lastMap = this.validArray[length - 1].entries();
-      // console.log('lm  ',this.validArray[length - 1].size )
-      if (this.validArray[length - 1].size != 0) {
-        // console.log(
-        //   `Начало работы с конфигурацией № ${this.validArray.length + 1}`
-        // );
+      console.log('call Func');
+      const lastMap = this.validArray[0].entries();
+      // console.log('Sizes  ',this.validArray[0].size )
+      if (this.validArray[0].size != 0) {
+        console.log(
+          `Начало работы с конфигурацией № ${this.validArray.length + 1}`
+        );
         let catchMap = new Map();
         let rate = ["l", "m", "h"];
         for (const arr of lastMap) {
           //проверка на то продолжать ли увеличивать конфигурацию с этой моделью
           let itertator = 0;
           let overlook = [];
+          // console.log('arrIn lastMap:', arr);
           arr[1].l != 0 ? itertator++ : overlook.push("l");
           arr[1].m != 0 ? itertator++ : overlook.push("m");
           arr[1].h != 0 ? itertator++ : overlook.push("h");
-          // console.log(arr[1], '  ', overlook);
+          // console.log('Arr[1] and overlock:  ',arr[1], '  ', overlook);
           if (itertator != 1 && itertator != 0) {
             for (let i = 0; i < rate.length; i++) {
               let element = rate[i];
               if (overlook.indexOf(element) == -1) {
                 let newCH = `${arr[0]}${element}`;
+                //  console.log('newch:   ',newCH)
+
                 let returnedObj;
                 let l = 0;
                 let m = 0;
@@ -153,7 +157,6 @@ export default {
                 let lengthOfNewCH = newCH.length;
                 let regexp = new RegExp(newCH, "g");
                 let errorCheck = false;
-                //  console.log('newch',newCH)
                 let lengthOfDeep = some.match(regexp);
                 if (lengthOfDeep != null) {
                   lengthOfDeep = lengthOfDeep.length;
@@ -181,6 +184,7 @@ export default {
                     m: m,
                     h: h
                   };
+
                   if(returnedObj.l + returnedObj.m + returnedObj.h != 0){
                   catchMap.set(newCH, returnedObj);
                   }
@@ -190,7 +194,7 @@ export default {
             }
           }
         }
-        
+        console.log('catchMap',catchMap);
         this.validArray = [catchMap, ...this.validArray];
         this.MoveToNewConfiguration();
       } else {

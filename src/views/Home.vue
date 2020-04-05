@@ -763,7 +763,7 @@ export default {
  
  
  
- console.log('after -----')
+
    let datasetS =  [ {
           label: "f",
           backgroundColor: this.randomColor,
@@ -812,7 +812,7 @@ export default {
         {
           label: "f",
           backgroundColor: this.randomColor,
-          data: [124]
+          data: [90]
         },
         {
           label: "f",
@@ -875,7 +875,7 @@ export default {
         },{
           label: "f",
           backgroundColor: this.randomColor,
-          data: [213]
+          data: [90]
         },{
           label: "f",
           backgroundColor: this.randomColor,
