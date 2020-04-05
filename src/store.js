@@ -19,7 +19,7 @@ export default new Vuex.Store({
         state.verArray = payload;
       },
       setDeep(state,payload) {
-        console.log('DDDDDDDDDDDEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEPPPPPP')
+        // console.log('DDDDDDDDDDDEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEPPPPPP')
         state.deep = payload;
       }
   },
