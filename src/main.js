@@ -1,15 +1,18 @@
-import Vue from 'vue'
-import './plugins/vuetify'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-import './registerServiceWorker'
-import bootstrap from 'vue-cli-plugin-bootstrap'
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+import "./registerServiceWorker";
+import VueHighcharts from 'vue-highcharts';
+import './plugins/base'
+import vuetify from './plugins/vuetify';
 
-Vue.config.productionTip = false
-Vue.use(bootstrap)
+Vue.use(VueHighcharts);
+Vue.config.productionTip = false;
+
 new Vue({
   router,
   store,
+  vuetify,
   render: h => h(App)
-}).$mount('#app')
+}).$mount("#app");

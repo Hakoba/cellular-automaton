@@ -1,35 +1,45 @@
 <template>
   <v-container grid-list-md text-xs-center>
     <v-layout row wrap>
-      <h1>третий шаг: валидация</h1>
-      <v-card class="small">
-        <router-link to="/">
+      <v-card style="width: 100%" class="small pa-4 ma-2">
+        <h1>Третий шаг: валидация</h1>
+        <!-- <router-link to="/">
           <v-btn class="info">в начало</v-btn>
         </router-link>
         <router-link to="/second">
           <v-btn class="info">Назад</v-btn>
-        </router-link>
+        </router-link>-->
       </v-card>
     </v-layout>
-    <v-card></v-card>
-    <v-card class="mb-4">
-       <!-- <h3>{{getPercent}}</h3> -->
-       <h3> Угаданно: {{correctness.true}}шт, Не угадано {{correctness.false}}<br>
-       Процент ошибки:{{correctness.error}};
-       Процент угаданных штук:{{correctness.percent}}; </h3>
+    <!-- <v-card>
+
+    </v-card>-->
+    <v-card class="mb-4;" style="text-align: center">
+      <!-- <h3>{{getPercent}}</h3> -->
+      <h3>
+        Угаданно: {{ correctness.true }}шт, Не угадано {{ correctness.false
+        }}
+        <br />
+        Процент ошибки:{{ correctness.error }}; Процент угаданных штук:{{
+        correctness.percent
+        }};
+      </h3>
       <table>
         <tr>
-         
-          <th>Low</th>
-          <th>Middle</th>
-          <th>High</th>
-           <th>Type</th>
+          <th v-for="header in headers" :key="header">{{header}}</th>
         </tr>
-        <tr v-for="(item,index) in validArray" class="access" :class="{wrong: !item.bool}" :key="index">
-          <td v-for="(elem,index) in item" :key="index">{{elem}}</td>
+        <tr
+          v-for="(item, index) in validArray"
+          class="access"
+          :class="{ wrong: !item.bool }"
+          :key="index"
+        >
+          <td
+            v-for="(elem, index) in item"
+            :key="index"
+          >{{ elem === true? 'Угадано': elem === false ? 'Ошибка': elem === 'kek' ? '[РОСКОМНАДЗОР]': elem }}</td>
         </tr>
       </table>
-     
     </v-card>
   </v-container>
 </template>
@@ -38,38 +48,43 @@
 export default {
   data() {
     return {
+      headers: ["Низкие", "Средние", "Выские", "Тип"],
       verArray: this.$store.state.verArray,
       mainArray: this.$store.state.mainArr,
       deep: this.$store.state.deep,
       validArray: [],
       counter: 0,
       boolArray: [],
-      correctness: {} 
+      correctness: {}
     };
   },
-  computed: {
-   
-  },
+  computed: {},
   methods: {
-     getPercent() {
-     let correctnessArray = this.boolArray.reduce(function(acc, el) {
+    getPercent() {
+      let correctnessArray = this.boolArray.reduce(function(acc, el) {
         acc[el] = (acc[el] || 0) + 1;
         return acc;
       }, {});
-        correctnessArray = {
-          percent: (correctnessArray.true*100/(correctnessArray.true+correctnessArray.false)).toFixed(3),
-          error: (100-correctnessArray.true*100/(correctnessArray.true+correctnessArray.false)).toFixed(3)
-          ,
-          ...correctnessArray
-        }
-     this.correctness = correctnessArray
+      correctnessArray = {
+        percent: (
+          (correctnessArray.true * 100) /
+          (correctnessArray.true + correctnessArray.false)
+        ).toFixed(3),
+        error: (
+          100 -
+          (correctnessArray.true * 100) /
+            (correctnessArray.true + correctnessArray.false)
+        ).toFixed(3),
+        ...correctnessArray
+      };
+      this.correctness = correctnessArray;
     },
     findBlah() {
       let mainObj = this.mainArray;
       let verArray = this.verArray;
       //  verArray = verArray.reverse();
       let deep = this.deep;
-      let str = mainObj[length - 1];
+      //   let str = mainObj[length - 1];
       let mainArray = new Array();
       let mainArraySec = new Array();
       for (let i = 0; i < mainObj.length; i++) {
@@ -86,20 +101,17 @@ export default {
       );
       let MALength = mainArray.length;
       //  console.log(`MALength ${MALength}, deep ${deep}`)
-      let counter = 0;
+      //   let counter = 0;
       //  for (let index = 0; index < 7; index++) {
 
       for (let index = 0; index < MALength; index++) {
         let lastTypes = [];
-        counter++;
+        // counter++;
         lastTypes = mainArray.slice(-deep);
         mainArray.pop();
         let toLow = [],
           toMiddle = [],
-          toHigh = [],
-          l = null,
-          m = null,
-          h = null;
+          toHigh = [];
         for (let i = 1; i <= lastTypes.length; i++) {
           //выводим последние элементs
           let types = lastTypes.slice(-i).join("");
@@ -138,25 +150,15 @@ export default {
       let low = 0,
         middle = 0,
         high = 0;
-      // console.log(this.deep)
       for (let index = 0; index < l.length; index++) {
-        let sum = l[index] + m[index] + h[index];
         low = low + l[index];
         middle += m[index];
         high += h[index];
-        // console.log(`low: ${low}, middle:${middle}, high: ${high} --  l = ${l[index]}, m = ${m[index]} h = ${h[index]}-- sum = ${sum}`)
       }
       let summ = low + middle + high;
-      // if (this.counter != ) {
-
-      // }
-      // console.log(this.mainArray.length+1, this.counter)
-
       if (this.counter == this.mainArray.length || this.counter <= this.deep) {
-        // this.mainArray.pop()
-        this.getPercent()
+        this.getPercent();
         return {
-          // counter: this.counter,
           l: (low / summ).toFixed(3),
           m: (middle / summ).toFixed(3),
           h: (high / summ).toFixed(3),
@@ -201,7 +203,7 @@ export default {
           l: (low / summ).toFixed(3),
           m: (middle / summ).toFixed(3),
           h: (high / summ).toFixed(3),
-          bool: bool
+          bool
         };
       }
     }
@@ -211,12 +213,10 @@ export default {
   }
 };
 </script>
-
-<style scoped lang='scss'>
+<style scoped lang="scss">
 table {
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
   font-size: 14px;
-  background: white;
   // max-width: 200px;
   display: inline;
   border-collapse: collapse;
@@ -229,26 +229,27 @@ tr {
 }
 th {
   font-weight: normal;
-  color: #039;
   border-bottom: 2px solid #6678b1;
   padding: 10px 8px;
 }
 td {
-  color: rgb(58, 58, 104);
   padding: 9px 8px;
   transition: 0.3s linear;
   padding: 4px 50px;
   font-size: 1.2em;
+  color: white;
 }
 tr:hover td {
   color: #ffffff;
   cursor: pointer;
-   background-color: #d9ff0093;
+  background-color: #1696f5;
 }
 .access {
-  background-color: #3fe4a593;
+  background-color: #41b883;
+  color: white;
 }
 .wrong {
-  background-color: #ff393993;
+  background-color: rgb(245, 160, 22);
+  color: white;
 }
 </style>

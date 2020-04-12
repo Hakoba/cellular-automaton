@@ -1,82 +1,62 @@
-<template>
-  <!-- Верефикация а не  валидация жиесть -->
-  <div>
-     <v-tooltip class="small" bottom>
-        <template class=" ml-5" v-slot:activator="{ on }">
-             <v-btn  v-on="on" @click="fart()">ТЫк</v-btn>
-     </template>
-    <span>Если вдрг не заработало, должно починиться</span>
-    </v-tooltip>
-     <v-tooltip class="small" bottom>
-        <template class=" ml-5" v-slot:activator="{ on }">
-             <v-btn  v-on="on" @click="saveChanges()">валидация</v-btn>
-     </template>
-    <span>Переход на валидацию</span>
-    </v-tooltip>
-    <v-container grid-list-md text-xs-center v-for="(items,index) in validArray" :key="index">
-      <h2>Конфиурация № {{validArray.length - index}}</h2> 
-      <v-layout row wrap >
-        <!-- <v-flex xs3 > -->
-           
-          
-          <v-flex xs12 sm6 md4 lg3 xlg2 class="mb-3"  v-for="(item, key) of items" :key="key">
-            <v-card>
-            <table>
-              <tr>
-                <th>Переход из</th>
-                <th>Переход в</th>
-                <th>колл-во переходов</th>
-              </tr>
-              <tr>
-                <td rowspan="4">{{item[0]}}</td>
-              </tr>
-              <tr v-for="(elem,i) in item[1]" :key="i">
-                <td>{{i}}</td>
-                <td>{{elem}}</td>
-              </tr>
-              <tr style="border-top: 2px solid #6678b1 ">
-                <td style="color: #039;">всего переходов</td>
-                <td colspan="2">{{allMoves(item[1])}}</td>
-              </tr>
-            </table> 
-            
-          </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
-       <v-snackbar
-      v-model="snackbar"
-      :timeout="timeout"
-      :bottom="y === 'bottom'"
-      :vertical="mode === 'vertical'"
-    >
-        Если все еще не заработало, то хз.
-      <v-btn
-        color="pink"
-        flat
-        @click="snackbar = false"
-      >
-        Закрыть
-      </v-btn>
-    </v-snackbar>
-  </div>
+<template lang="pug">
+
+ v-card.pa-7.ma-6
+  h1 2 шаг: верификация
+  d-Charts(style="text-align: center" :data='chartData' type='colored')
+  //- v-tooltip.small(bottom='')
+  //-   template.ml-5(v-slot:activator='{ on }')
+  //-     v-btn(v-on='on', @click='fart()') &Tcy;&Ycy;&kcy;
+  //-   span &IEcy;&scy;&lcy;&icy; &vcy;&dcy;&rcy;&gcy; &ncy;&iecy; &zcy;&acy;&rcy;&acy;&bcy;&ocy;&tcy;&acy;&lcy;&ocy;, &dcy;&ocy;&lcy;&zhcy;&ncy;&ocy; &pcy;&ocy;&chcy;&icy;&ncy;&icy;&tcy;&softcy;&scy;&yacy;
+  v-tooltip.small(bottom='')
+    template.ml-5(v-slot:activator='{ on }')
+      //- v-btn(v-on='on', @click='$router.push({name:"third"})') &vcy;&acy;&lcy;&icy;&dcy;&acy;&tscy;&icy;&yacy;
+    span &Pcy;&iecy;&rcy;&iecy;&khcy;&ocy;&dcy; &ncy;&acy; &vcy;&acy;&lcy;&icy;&dcy;&acy;&tscy;&icy;&yucy;
+  v-container(grid-list-md='', text-xs-center='', v-for='(items,index) in validArray', :key='index')
+    h2 &Kcy;&ocy;&ncy;&fcy;&icy;&ucy;&rcy;&acy;&tscy;&icy;&yacy; &numero; {{validArray.length - index}}
+    v-layout(row='', wrap='')
+      v-flex.mb-3(xs12='', sm6='', md4='', lg3='', xlg2='', v-for='(item, key) of items', :key='key')
+        v-card(elevation='12' color="#333")
+          table
+            tr
+              th &Pcy;&iecy;&rcy;&iecy;&khcy;&ocy;&dcy; &icy;&zcy;
+              th &Pcy;&iecy;&rcy;&iecy;&khcy;&ocy;&dcy; &vcy;
+              th &kcy;&ocy;&lcy;&lcy;-&vcy;&ocy; &pcy;&iecy;&rcy;&iecy;&khcy;&ocy;&dcy;&ocy;&vcy;
+            tr
+              td(rowspan='4') {{item[0]}}
+              //-  {{item[0] == 'l'? 'Н': item[0] == 'm'? 'С':'В' }}
+            tr(v-for='(elem,i) in item[1]', :key='i') 
+              td.glow {{i == 'l'? 'Н': i == 'm'? 'С':'В' }} 
+              td.glow {{elem}}
+            tr(style='border-top: 2px solid #6678b1 ')
+              td(style='color: #ccc;') &vcy;&scy;&iecy;&gcy;&ocy; &pcy;&iecy;&rcy;&iecy;&khcy;&ocy;&dcy;&ocy;&vcy;
+              td(colspan='2') {{allMoves(item[1])}}
+  v-snackbar(v-model='snackbar', :timeout='timeout', :bottom="y === 'bottom'", :vertical="mode === 'vertical'")
+    | &IEcy;&scy;&lcy;&icy; &vcy;&scy;&iecy; &iecy;&shchcy;&iecy; &ncy;&iecy; &zcy;&acy;&rcy;&acy;&bcy;&ocy;&tcy;&acy;&lcy;&ocy;, &tcy;&ocy; &khcy;&zcy;.
+    v-btn(color='pink', flat='', @click='snackbar = false')
+      | &Zcy;&acy;&kcy;&rcy;&ycy;&tcy;&softcy;
+
 </template>
 <script>
 export default {
   data() {
     return {
+      chartData: [],
       some: this.$store.state.mainArr.map(elem => (elem = elem.type)),
       validArray: [],
       verArray: null,
       snackbar: false,
-        y: 'bottom',
-        x: null,
-        mode: '',
-        timeout: 6000,
+      y: "bottom",
+      x: null,
+      mode: "",
+      timeout: 6000
     };
   },
   props: ["data"],
   methods: {
+    setChartData() {
+      this.chartData = this.$store.state.mainArr;
+      console.log("this.chartData", this.chartData);
+    },
     async newArr() {
       let some = this.some;
       // console.log("some", some);
@@ -102,7 +82,6 @@ export default {
             }
           }
         }
-        // console.log(`l: ${l}, m: ${m} h ${h} `);
         returnedObj = {
           l: l,
           m: m,
@@ -113,30 +92,24 @@ export default {
       this.validArray = await [catchMap];
       this.MoveToNewConfiguration();
     },
-    fart(){
-      this.MoveToNewConfiguration(); 
+    fart() {
+      this.MoveToNewConfiguration();
       this.snackbar = true;
     },
-    saveChanges(){
-      this.$store.commit('setVerificArray', this.verArray)
-      this.$store.commit('setDeep', this.validArray.length)
-      this.$router.push('/third');
+    saveChanges() {
+      this.$store.commit("setVerificArray", this.verArray);
+      this.$store.commit("setDeep", this.validArray.length);
+      // this.$router.push({name: 'third'});
     },
     MoveToNewConfiguration() {
-      console.log('call Func');
       const lastMap = this.validArray[0].entries();
-      // console.log('Sizes  ',this.validArray[0].size )
       if (this.validArray[0].size != 0) {
-        console.log(
-          `Начало работы с конфигурацией № ${this.validArray.length + 1}`
-        );
         let catchMap = new Map();
         let rate = ["l", "m", "h"];
         for (const arr of lastMap) {
           //проверка на то продолжать ли увеличивать конфигурацию с этой моделью
           let itertator = 0;
           let overlook = [];
-          // console.log('arrIn lastMap:', arr);
           arr[1].l != 0 ? itertator++ : overlook.push("l");
           arr[1].m != 0 ? itertator++ : overlook.push("m");
           arr[1].h != 0 ? itertator++ : overlook.push("h");
@@ -156,7 +129,7 @@ export default {
                 let some = this.some.join("");
                 let lengthOfNewCH = newCH.length;
                 let regexp = new RegExp(newCH, "g");
-                let errorCheck = false;
+                // let errorCheck = false;
                 let lengthOfDeep = some.match(regexp);
                 if (lengthOfDeep != null) {
                   lengthOfDeep = lengthOfDeep.length;
@@ -185,24 +158,19 @@ export default {
                     h: h
                   };
 
-                  if(returnedObj.l + returnedObj.m + returnedObj.h != 0){
-                  catchMap.set(newCH, returnedObj);
+                  if (returnedObj.l + returnedObj.m + returnedObj.h != 0) {
+                    catchMap.set(newCH, returnedObj);
                   }
-                  
                 }
               }
             }
           }
         }
-        console.log('catchMap',catchMap);
         this.validArray = [catchMap, ...this.validArray];
         this.MoveToNewConfiguration();
       } else {
         this.validArray.shift();
-        // console.log(
-        //   `Максимальный уовень конфигурации: ${this.validArray.length}`
-        // );
-        // console.log(Array.from(this.validArray[0]))
+
         let finalArray = new Array();
         this.verArray = this.validArray;
         for (let i = 0; i < this.validArray.length; i++) {
@@ -212,6 +180,7 @@ export default {
       }
     },
     allMoves(o) {
+      this.saveChanges();
       return Object.keys(o).reduce(function(previous, key) {
         return previous + o[key];
       }, 0);
@@ -219,6 +188,7 @@ export default {
   },
   mounted() {
     this.newArr();
+    this.setChartData();
   }
 };
 </script>
@@ -227,7 +197,7 @@ export default {
 table {
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
   font-size: 14px;
-  background: white;
+  // background: white;
   // max-width: 200px;
   display: inline;
   border-collapse: collapse;
@@ -236,7 +206,7 @@ table {
 }
 th {
   font-weight: normal;
-  color: #039;
+  color: #bbb;
   border-bottom: 2px solid #6678b1;
   padding: 10px 8px;
 }
@@ -246,6 +216,11 @@ td {
   transition: 0.3s linear;
 }
 tr:hover td {
-  color: #6699ff;
+  color: #fff;
+  cursor: pointer;
+}
+.glow {
+  color: #eee;
+  text-shadow: 0 0 7px #41b883;
 }
 </style>
