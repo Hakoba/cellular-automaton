@@ -3,6 +3,14 @@ v-app#inspire
   v-navigation-drawer(v-model='drawer', app='', clipped='')
    
     v-list(dense='' shaped )
+      v-list-item
+        v-list-item-content
+          v-list-item-title
+            h3.pa-2 Демо аккаунт
+          v-list-item-subtitle.pl-2
+            | demo
+      v-divider
+
       v-subheader.mt-4.grey--text.text--darken-1 Этапы
       v-list-item-group(v-model="active")
         v-list-item(v-for='item in routes', :key='item.text' , :disabled="item.disabled"  @click="$router.push({ name: item.route})",  link='')
@@ -11,7 +19,16 @@ v-app#inspire
           v-list-item-content
             v-list-item-title 
               | {{ item.text }}
+      v-divider.mt-2(v-if="this.$route.name=='third'")
+      v-list-item.mt-4(v-if="this.$route.name=='third'")
+        v-btn( block)
+           v-icon(left) extension
+           | Экспорт в Excel
 
+
+    template(v-slot:append='')
+      .pa-2
+        v-btn(block='') Выход
   v-app-bar(app='', clipped-left='', color='primary', dense='')
     v-app-bar-nav-icon(@click.stop='drawer = !drawer' color='white')
     v-toolbar-title.headline.text-uppercase

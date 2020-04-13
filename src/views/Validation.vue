@@ -20,7 +20,9 @@
         Угаданно: {{ correctness.true }}шт, Не угадано {{ correctness.false
         }}
         <br />
-        Процент ошибки:{{ correctness.error }}; Процент угаданных штук:{{
+        Процент ошибки:{{ correctness.error }};
+        <br />
+        Процент угаданных частей:{{
         correctness.percent
         }};
       </h3>
@@ -37,7 +39,7 @@
           <td
             v-for="(elem, index) in item"
             :key="index"
-          >{{ elem === true? 'Угадано': elem === false ? 'Ошибка': elem === 'kek' ? '[РОСКОМНАДЗОР]': elem }}</td>
+          >{{ elem === true? 'Угадано': elem === false ? 'Ошибка': elem === 'kek' ? 'Не обрабатывается': elem }}</td>
         </tr>
       </table>
     </v-card>

@@ -2,6 +2,8 @@
   <div style="margin: 2em">
     <v-card style="padding: 2em">
       <h1>Первый Шаг</h1>
+      <v-file-input accept=".xls, .xlsx" label="Добавить значения из Excel файла"></v-file-input>
+
       <v-text-field
         ref="btn"
         v-model="number"
@@ -9,14 +11,28 @@
         type="number"
         v-on:keyup.enter="addColumn()"
       ></v-text-field>
+
       <div style="display: flex; justify-content: space-around">
         <div style="text-align: center">
-          <v-btn class="info ma-2" @click="addColumn()">Добавить столбик</v-btn>
-          <v-btn class="info ma-2" @click="fillRandomData()">Заполнить случайными числам</v-btn>
+          <v-btn style="width: 250px" class="info ma-2" @click="addColumn()">Добавить элемент</v-btn>
+          <v-btn style="width: 250px" class="info ma-2" @click="removeColumn()">Удалить элемент</v-btn>
+          <v-btn
+            style="width: 518px"
+            class="info ma-2"
+            @click="fillRandomData()"
+          >Заполнить случайными числам</v-btn>
         </div>
-        <div style="text-align: center">
-          <v-btn class="info ma-2" @click="saveInLS()">Сохранить набор в локальное хранилище</v-btn>
-          <v-btn class="info ma-2" @click="loadFromLS()">Загрузить из локального хранилища</v-btn>
+        <div style="text-align: center;">
+          <v-btn
+            style="width: 400px"
+            class="info ma-2"
+            @click="saveInLS()"
+          >Сохранить в локальное хранилище</v-btn>
+          <v-btn
+            style="width: 400px"
+            class="info ma-2"
+            @click="loadFromLS()"
+          >Загрузить из локального хранилища</v-btn>
         </div>
       </div>
     </v-card>
@@ -37,8 +53,9 @@
         </v-flex>
       </v-layout>
       <v-btn class="info" @click="lmh()">Инициировать верификацию</v-btn>
+      <v-btn class="info ma-2" @click="loadFromLS()">Выбрать значения из предыдущих данных</v-btn>
     </v-card>
-    <v-card style="text-align: center; background-color: #999" class="ma-3 pa-6">
+    <v-card style="text-align: center; " class="ma-3 pa-6">
       <d-Charts type="simple" :data="chartData"></d-Charts>
     </v-card>
 
@@ -479,9 +496,16 @@ export default {
     getRandomInt() {
       return Math.floor(12 + Math.random() * (30 + 1 - 12));
     },
+    removeColumn() {
+      this.counter++;
+      this.datasets.pop();
+      this.chartData.pop();
+      this.number = "";
+      this.fillData();
+      this.$refs.btn.focus();
+    },
     addColumn() {
       this.counter++;
-
       this.datasets.push({
         label: `Число № ${this.counter}`,
         backgroundColor: this.randomColor(),

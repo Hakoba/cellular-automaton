@@ -1,7 +1,7 @@
 <template lang="pug">
 
  v-card.pa-7.ma-6
-  h1 2 шаг: верификация
+  h1 2 шаг: Верификация
   d-Charts(style="text-align: center" :data='chartData' type='colored')
   //- v-tooltip.small(bottom='')
   //-   template.ml-5(v-slot:activator='{ on }')
@@ -12,7 +12,7 @@
       //- v-btn(v-on='on', @click='$router.push({name:"third"})') &vcy;&acy;&lcy;&icy;&dcy;&acy;&tscy;&icy;&yacy;
     span &Pcy;&iecy;&rcy;&iecy;&khcy;&ocy;&dcy; &ncy;&acy; &vcy;&acy;&lcy;&icy;&dcy;&acy;&tscy;&icy;&yucy;
   v-container(grid-list-md='', text-xs-center='', v-for='(items,index) in validArray', :key='index')
-    h2 &Kcy;&ocy;&ncy;&fcy;&icy;&ucy;&rcy;&acy;&tscy;&icy;&yacy; &numero; {{validArray.length - index}}
+    h2 Конфигурация &numero; {{validArray.length - index}}
     v-layout(row='', wrap='')
       v-flex.mb-3(xs12='', sm6='', md4='', lg3='', xlg2='', v-for='(item, key) of items', :key='key')
         v-card(elevation='12' color="#333")
