@@ -59,11 +59,11 @@
       <d-Charts type="simple" :data="chartData"></d-Charts>
     </v-card>
 
-    <!-- <div style="height: 200px; overflow:auto">
-      <pre>
-          {{ datacollection }}
-     </pre>
-    </div>-->
+    <!-- <d-Snackbar :snackbar="snackbarState" ></d-Snackbar> -->
+    <v-snackbar v-model="snackbarState" :timeout="3000" top right>
+      Поле не может быть пустым
+      <v-btn class="primary" text @click="snackbarState = false">Закрыть</v-btn>
+    </v-snackbar>
   </div>
 </template>
 
@@ -113,7 +113,8 @@ export default {
 
       arrayOfNumber: [],
       counter: 0,
-      finalArray: []
+      finalArray: [],
+      snackbarState: false
     };
   },
   mounted() {
@@ -505,16 +506,20 @@ export default {
       this.$refs.btn.focus();
     },
     addColumn() {
-      this.counter++;
-      this.datasets.push({
-        label: `Число № ${this.counter}`,
-        backgroundColor: this.randomColor(),
-        data: [parseInt(this.number)]
-      });
-      this.chartData.push(parseInt(this.number));
-      this.number = "";
-      this.fillData();
-      this.$refs.btn.focus();
+      if (this.number !== "") {
+        this.counter++;
+        this.datasets.push({
+          label: `Число № ${this.counter}`,
+          backgroundColor: this.randomColor(),
+          data: [parseInt(this.number)]
+        });
+        this.chartData.push(parseInt(this.number));
+        this.number = "";
+        this.fillData();
+        this.$refs.btn.focus();
+      } else {
+        this.snackbarState = true;
+      }
     }
   }
 };
