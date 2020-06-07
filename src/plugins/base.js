@@ -10,7 +10,7 @@ requireComponent.keys().forEach(fileName => {
   const componentName = upperFirst(
     camelCase(fileName.replace(/^\.\//, "").replace(/\.\w+$/, ""))
   );
-
+  console.log(componentName)
   Vue.component(
     `d-${componentName}`,
     componentConfig.default || componentConfig

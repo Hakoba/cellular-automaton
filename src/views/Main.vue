@@ -52,8 +52,9 @@
           </v-layout>
         </v-flex>
       </v-layout>
-      <v-btn class="info" @click="lmh()">Инициировать верификацию</v-btn>
-      <v-btn class="info ma-2" @click="loadFromLS()">Выбрать значения из предыдущих данных</v-btn>
+      <v-btn class="info ma-2" @click="lmh()">Инициировать верификацию</v-btn>
+      <d-Preset></d-Preset>
+      <!-- <v-btn class="info ma-2" @click="loadFromLS()">Пресеты</v-btn> -->
     </v-card>
     <v-card style="text-align: center; " class="ma-3 pa-6">
       <d-Charts type="simple" :data="chartData"></d-Charts>
@@ -122,13 +123,12 @@ export default {
   },
   methods: {
     saveInLS() {
-      let kek = this.datasets;
-      console.log(kek);
-      localStorage.setItem("datasets", kek);
+      let dataSet = this.datasets;
+      if (dataSet.length > 0) {
+        localStorage.setItem("datasets", dataSet);
+      }
     },
     loadFromLS() {
-      // this.datasets = localStorage.getItem('array')
-      // console.log(localStorage.getItem('datasets'));
       let item = localStorage.getItem("datasets");
       this.datasets = JSON.parse(item);
       this.fillData();
@@ -525,4 +525,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.theme--dark.v-picker__body {
+  background: #1e1e1e;
+}
+</style>

@@ -17,18 +17,15 @@
     <v-card class="mb-4;" style="text-align: center">
       <!-- <h3>{{getPercent}}</h3> -->
       <h3>
-        Угаданно: {{ correctness.true }}шт, Не угадано {{ correctness.false
-        }}
+        Угаданно: {{ correctness.true }}шт, Не угадано {{ correctness.false }}
         <br />
         Процент ошибки:{{ correctness.error }};
         <br />
-        Процент угаданных частей:{{
-        correctness.percent
-        }};
+        Процент угаданных частей:{{ correctness.percent }};
       </h3>
       <table>
         <tr>
-          <th v-for="header in headers" :key="header">{{header}}</th>
+          <th v-for="header in headers" :key="header">{{ header }}</th>
         </tr>
         <tr
           v-for="(item, index) in validArray"
@@ -36,10 +33,17 @@
           :class="{ wrong: !item.bool }"
           :key="index"
         >
-          <td
-            v-for="(elem, index) in item"
-            :key="index"
-          >{{ elem === true? 'Угадано': elem === false ? 'Ошибка': elem === 'kek' ? 'Не обрабатывается': elem }}</td>
+          <td v-for="(elem, index) in item" :key="index">
+            {{
+            elem === true
+            ? "Угадано"
+            : elem === false
+            ? "Ошибка"
+            : elem === "kek"
+            ? "Не обрабатывается"
+            : elem
+            }}
+          </td>
         </tr>
       </table>
     </v-card>
@@ -50,12 +54,21 @@
 export default {
   data() {
     return {
-      headers: ["Низкие", "Средние", "Выские", "Тип"],
+      headers: [
+        "Номер",
+        "Низкие",
+        "Средние",
+        "Выские",
+        "Значение",
+        "Прогнозное значение",
+        "Тип"
+      ],
       verArray: this.$store.state.verArray,
       mainArray: this.$store.state.mainArr,
       deep: this.$store.state.deep,
       validArray: [],
       counter: 0,
+      commonCount: 1,
       boolArray: [],
       correctness: {}
     };
@@ -142,6 +155,7 @@ export default {
         // console.log('arrays: ', forecast)
         this.counter--;
         this.validArray.push(forecast);
+        this.commonCount++;
         // this.mainArray.pop()
 
         //
@@ -161,9 +175,12 @@ export default {
       if (this.counter == this.mainArray.length || this.counter <= this.deep) {
         this.getPercent();
         return {
+          place: this.commonCount,
           l: (low / summ).toFixed(3),
           m: (middle / summ).toFixed(3),
           h: (high / summ).toFixed(3),
+          real: this.mainArray[this.commonCount - 1],
+          forec: this.mainArray[this.commonCount - 1],
           bool: "kek"
         };
       } else {
@@ -202,11 +219,42 @@ export default {
         }
 
         return {
+          place: this.commonCount,
           l: (low / summ).toFixed(3),
           m: (middle / summ).toFixed(3),
           h: (high / summ).toFixed(3),
+          real: this.$store.state.mainArr[this.commonCount - 1].item,
+          forec: this.getPseudoRandomNumber(
+            bool,
+            this.$store.state.mainArr,
+            maximum,
+            this.commonCount,
+            this.$store.state.mainArr[this.commonCount - 1].item
+          ),
           bool
         };
+      }
+    },
+    getPseudoRandomNumber(bool, mainArr, lingvisticMax, commonCount, realVal) {
+      console.log(bool, mainArr, lingvisticMax, commonCount);
+      if (bool) {
+        return realVal + (-2 - 0.5 + Math.random() * (2 + -2 + 1)).toFixed(2);
+      } else {
+        mainArr = JSON.parse(JSON.stringify(mainArr));
+        let spliced = mainArr.splice(commonCount - this.deep, commonCount);
+        let arr = spliced.filter(item => item.type === lingvisticMax);
+        const reducer = (accumulator, currentValue) =>
+          accumulator.item + currentValue.item;
+        let returnedValue = arr.reduce(reducer) / arr.length;
+        if (
+          returnedValue === Infinity ||
+          returnedValue === 0 ||
+          isNaN(returnedValue)
+        ) {
+          returnedValue =
+            realVal + (-2 - 0.5 + Math.random() * (2 + -2 + 1)).toFixed(4);
+        }
+        return returnedValue;
       }
     }
   },

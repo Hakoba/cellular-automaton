@@ -5,9 +5,8 @@
 <script>
 export default {
   name: "App",
-   created() {
+  created() {
     this.$vuetify.theme.dark = true;
   }
 };
-
 </script>
