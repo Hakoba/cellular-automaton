@@ -7,7 +7,7 @@
           <v-col cols="12" sm="8" md="4">
             <v-card class="elevation-12">
               <v-toolbar color="primary" dark flat>
-                <v-toolbar-title>Форма входа</v-toolbar-title>
+                <v-toolbar-title>Форма регистрации</v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-tooltip bottom>
                   <template v-slot:activator="{ on }">
@@ -29,17 +29,30 @@
                     prepend-icon="mdi-lock"
                     type="password"
                   ></v-text-field>
+                  <v-text-field
+                    id="password"
+                    label="Поддтвердите пароль"
+                    name="password"
+                    prepend-icon="mdi-lock"
+                    type="password"
+                  ></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary">Войти</v-btn>
+                <v-btn @click="createUser" color="primary">Создать</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
       </v-container>
     </v-content>
+    <div class="text-center ma-2">
+      <v-snackbar top right v-model="snackbar">
+        Поздравляем с успешной регистрацией, вы будете перенесены на главную страницу через 5 секунд
+        <v-btn color="primary" text @click="snackbar = false">Перейти</v-btn>
+      </v-snackbar>
+    </div>
   </v-app>
 </template>
 
@@ -47,6 +60,17 @@
 export default {
   props: {
     source: String
+  },
+  data() {
+    return {
+      snackbar: false,
+      sec: 5
+    };
+  },
+  methods: {
+    createUser() {
+      this.snackbar = true;
+    }
   }
 };
 </script>

@@ -8,7 +8,8 @@ export default new Vuex.Store({
     mainArr: [],
     verArray: [], //массив полченный после верификации
     deep: null,
-    buildInited: false
+    buildInited: false,
+    def: '',
   },
   mutations: {
     setMainArr(state, payload) {

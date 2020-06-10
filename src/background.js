@@ -22,7 +22,7 @@ function createWindow() {
     width: 1200,
     height: 900,
     titleBarStyle: "customButtonsOnHover",
-    frame: false,
+    frame: true,
     webPreferences: {
       nodeIntegration: true,
     },

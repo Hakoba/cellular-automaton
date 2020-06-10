@@ -235,6 +235,7 @@ export default {
         };
       }
     },
+  
     getPseudoRandomNumber(bool, mainArr, lingvisticMax, commonCount, realVal) {
       console.log(bool, mainArr, lingvisticMax, commonCount);
       if (bool) {
@@ -252,7 +253,7 @@ export default {
           isNaN(returnedValue)
         ) {
           returnedValue =
-            realVal + (-2 - 0.5 + Math.random() * (2 + -2 + 1)).toFixed(4);
+            realVal + (-2 - 0.5 + Math.random() * (2 + -2 + 1)).toFixed(4) + parseFloat(this.$store.state.def);
         }
         return returnedValue;
       }

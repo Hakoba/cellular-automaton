@@ -57,6 +57,7 @@ export default {
       this.chartData = this.$store.state.mainArr;
       console.log("this.chartData", this.chartData);
     },
+   
     async newArr() {
       let some = this.some;
       // console.log("some", some);
@@ -92,10 +93,10 @@ export default {
       this.validArray = await [catchMap];
       this.MoveToNewConfiguration();
     },
-    fart() {
-      this.MoveToNewConfiguration();
-      this.snackbar = true;
-    },
+    // fart() {
+    //   this.MoveToNewConfiguration();
+    //   this.snackbar = true;
+    // },
     saveChanges() {
       this.$store.commit("setVerificArray", this.verArray);
       this.$store.commit("setDeep", this.validArray.length);

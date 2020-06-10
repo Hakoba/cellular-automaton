@@ -11,6 +11,7 @@
         type="number"
         v-on:keyup.enter="addColumn()"
       ></v-text-field>
+      <v-text-field v-model="def" label="Введите ε"></v-text-field>
 
       <div style="display: flex; justify-content: space-around">
         <div style="text-align: center">
@@ -85,6 +86,7 @@ export default {
       switch1: true,
       datacollection: [],
       number: "",
+      def: '',
       options: {
         width: "600px",
         responsive: true, // my new default options
@@ -121,7 +123,9 @@ export default {
   mounted() {
     this.fillData();
   },
+  
   methods: {
+
     saveInLS() {
       let dataSet = this.datasets;
       if (dataSet.length > 0) {
@@ -457,6 +461,7 @@ export default {
       return "rgb(" + x + "," + y + "," + z + ")";
     },
     lmh() {
+      this.$store.state.def = this.def;
       this.datasets.map(item => this.arrayOfNumber.push(item.data[0]));
       let min, max, average;
       let cntr = 0;
