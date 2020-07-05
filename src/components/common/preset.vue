@@ -65,7 +65,13 @@
             >{{item.status == 'active' ? 'Aктивна': 'Остановлена'}}</span>
           </template>
           <template v-slot:item.permission="{ item }">
-            <v-btn class="mx-2" fab small color="accent">{{item.permission}}</v-btn>
+            <v-btn
+              class="mx-2"
+              fab
+              small
+              color="accent"
+              @click="presetDi = true"
+            >{{item.permission}}</v-btn>
           </template>
         </v-data-table>
       </v-card-text>
@@ -77,6 +83,30 @@
         <v-btn color="primary" text @click="dialog = false">Отмена</v-btn>
       </v-card-actions>
     </v-card>
+    <v-dialog v-model="presetDi" width="510">
+      <v-card>
+        <v-card-title primary-title>Код создания пикселя</v-card-title>
+        <v-card-title>Данный фрагмент кода необходимо вставить на страницу с которой ведется сбор.</v-card-title>
+
+        <v-card-text style="font-style:italic">
+          <pre>
+&lt;script&gt;
+ window.onload = function() {
+    var img = document.createElement('img');
+    img.src = localhost:3000/api/counter/{{ parseInt(10000000000 + Math.random() * (100000000000 + 1 - 10000000000))}}
+  };
+&lt;/script&gt;
+          </pre>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" text @click="presetDi = false">Скопировать в буффер обмена</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-dialog>
 </template>
 
@@ -84,6 +114,7 @@
 export default {
   data() {
     return {
+      presetDi: false,
       dialog: false,
       modal: false,
       headers: [

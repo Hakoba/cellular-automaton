@@ -21,14 +21,12 @@ v-app#inspire
               | {{ item.text }}
       v-divider.mt-2(v-if="this.$route.name=='third'")
       v-list-item.mt-4(v-if="this.$route.name=='third'")
-        v-btn( block)
-           v-icon(left) extension
-           | Экспорт в Excel
+        d-ExportToExcel
 
 
     template(v-slot:append='')
       .pa-2
-        v-btn(block='') Выход
+        v-btn(block='' @click="$router.push('/auth/login')") Выход
   v-app-bar(app='', clipped-left='', color='primary', dense='')
     v-app-bar-nav-icon(@click.stop='drawer = !drawer' color='white')
     v-toolbar-title.headline.text-uppercase

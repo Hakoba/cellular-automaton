@@ -32,6 +32,10 @@
                 </v-form>
               </v-card-text>
               <v-card-actions>
+                <v-btn text color="primary">
+                  Нет аккаунта?
+                  Создать
+                </v-btn>
                 <v-spacer></v-spacer>
                 <v-btn color="primary">Войти</v-btn>
               </v-card-actions>

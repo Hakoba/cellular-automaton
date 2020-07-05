@@ -57,7 +57,7 @@ export default {
       this.chartData = this.$store.state.mainArr;
       console.log("this.chartData", this.chartData);
     },
-   
+
     async newArr() {
       let some = this.some;
       // console.log("some", some);
@@ -212,7 +212,7 @@ th {
   padding: 10px 8px;
 }
 td {
-  color: #669;
+  // color: #669;
   padding: 9px 8px;
   transition: 0.3s linear;
 }

@@ -532,6 +532,6 @@ export default {
 
 <style>
 .theme--dark.v-picker__body {
-  background: #1e1e1e;
+  background: #222;
 }
 </style>

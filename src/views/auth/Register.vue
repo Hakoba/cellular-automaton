@@ -39,6 +39,7 @@
                 </v-form>
               </v-card-text>
               <v-card-actions>
+                <v-btn text color="primary">Уже есть аккаунт? Войти</v-btn>
                 <v-spacer></v-spacer>
                 <v-btn @click="createUser" color="primary">Создать</v-btn>
               </v-card-actions>

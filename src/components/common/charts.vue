@@ -1,6 +1,6 @@
 <template lang="pug">
 div 
-    highcharts( style="display: inline-block; width: 900px" ref="highcharts"  :options="columnChart")
+    highcharts( :id="propId" style="display: inline-block; width: 900px" ref="highcharts"  :options="columnChart")
     v-dialog(v-model='isDialogOpen', width='350')
       v-card
         v-card-title(style='background: #333', primary-title='') Меню редактирования
@@ -32,6 +32,13 @@ export default {
     type: {
       type: String,
       required: true
+    },
+    isCustom: {
+      type: Boolean
+    },
+    propId: {
+      type: String,
+      default: "noId"
     }
   },
 
@@ -61,7 +68,7 @@ export default {
     setChart() {
       this.columnChart = {
         title: {
-          text: "Показатели за весь период"
+          text: this.isCustom ? "Процент ошибок" : "Показатели за весь период"
         },
         legend: {
           enabled: this.type === "simple" ? true : false
@@ -151,17 +158,17 @@ export default {
         name: "Общее колличество",
         data: [
           {
-            name: "Мал.",
+            name: this.isCustom ? "Не угадно" : "Мал.",
             y: propsCounter.l,
             color: "#e32d00"
           },
           {
-            name: "Ср.",
+            name: this.isCustom ? "Не учитываются" : "Ср.",
             y: propsCounter.m,
             color: "#f5a016"
           },
           {
-            name: "Больш.",
+            name: this.isCustom ? "Угадано" : "Бол.",
             y: propsCounter.h,
             color: "#41B883"
           }

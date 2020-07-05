@@ -2,7 +2,7 @@
   <v-container grid-list-md text-xs-center>
     <v-layout row wrap>
       <v-card style="width: 100%" class="small pa-4 ma-2">
-        <h1>Третий шаг: валидация</h1>
+        <h1>Третий шаг: валидация и дефазификация</h1>
         <!-- <router-link to="/">
           <v-btn class="info">в начало</v-btn>
         </router-link>
@@ -16,14 +16,35 @@
     </v-card>-->
     <v-card class="mb-4;" style="text-align: center">
       <!-- <h3>{{getPercent}}</h3> -->
-      <h3>
-        Угаданно: {{ correctness.true }}шт, Не угадано {{ correctness.false }}
-        <br />
-        Процент ошибки:{{ correctness.error }};
-        <br />
-        Процент угаданных частей:{{ correctness.percent }};
-      </h3>
-      <table>
+      <v-card-title>
+        Удачно: {{ correctness.true }} ед; Ошибочно: {{ correctness.false }}ед.
+        <v-spacer />
+        Процент ошибки:{{ correctness.error }}
+        <v-spacer />
+        Процент угаданных частей:{{ correctness.percent }}
+      </v-card-title>
+      <v-data-table
+        :itemsPerPage="15"
+        class="elevation-1"
+        style="width:100%"
+        :headers="headers"
+        :items="validArray"
+      >
+        <template v-slot:item.bool="{ item }">
+          <v-icon
+            :color="item.bool === true ? 'primary': item.bool === false ? 'warning':
+            'info'"
+            dark
+          >
+            {{ item.bool === true ? 'check_circle': item.bool === false ? 'block':
+            'change_history' }}
+          </v-icon>
+        </template>
+        <template v-slot:item.option="{ item }">
+          <setting-popover :user="item" @userUpdated="getUsers"></setting-popover>
+        </template>
+      </v-data-table>
+      <!-- <table>
         <tr>
           <th v-for="header in headers" :key="header">{{ header }}</th>
         </tr>
@@ -32,8 +53,9 @@
           class="access"
           :class="{ wrong: !item.bool }"
           :key="index"
+          width="20%"
         >
-          <td v-for="(elem, index) in item" :key="index">
+          <td v-for="(elem, index) in item" :key="index" >
             {{
             elem === true
             ? "Угадано"
@@ -45,7 +67,19 @@
             }}
           </td>
         </tr>
-      </table>
+      </table>-->
+    </v-card>
+    <v-card>
+      <div>
+        <d-Charts
+          propId="forecast"
+          style="text-align: center"
+          :isCustom="true"
+          :data="verChartData"
+          type="colored"
+        ></d-Charts>
+        <d-Charts propId="real" style="text-align: center" :data="chartData" type="colored"></d-Charts>
+      </div>
     </v-card>
   </v-container>
 </template>
@@ -54,14 +88,24 @@
 export default {
   data() {
     return {
+      // headers: [
+      //   "Номер",
+      //   "Низкие",
+      //   "Средние",
+      //   "Выские",
+      //   "Значение",
+      //   "Прогнозное значение",
+      //   "Тип"
+      // ],
       headers: [
-        "Номер",
-        "Низкие",
-        "Средние",
-        "Выские",
-        "Значение",
-        "Прогнозное значение",
-        "Тип"
+        // { text: "ID пользователя", value: "id" },
+        { text: "Номер", value: "place" },
+        { text: "Низкие", value: "l" },
+        { text: "Средние", value: "m", align: "center" },
+        { text: "Высокие", value: "h" },
+        { text: "Значение", value: "real" },
+        { text: "Прогнозное значение", value: "forec" },
+        { text: "Тип", value: "bool" }
       ],
       verArray: this.$store.state.verArray,
       mainArray: this.$store.state.mainArr,
@@ -70,7 +114,9 @@ export default {
       counter: 0,
       commonCount: 1,
       boolArray: [],
-      correctness: {}
+      correctness: {},
+      chartData: [],
+      verChartData: []
     };
   },
   computed: {},
@@ -142,8 +188,9 @@ export default {
             toHigh.push(cases.h / sum);
             // console.log('cases: ', cases )
           } else {
-            console.error(
-              "error, dats table isn't exist, it's normal -- calm down!"
+            console.log(
+              "%c error, dats table isn't exist, it's normal -- calm down!",
+              "color: #44f"
             );
             //  return null
           }
@@ -160,7 +207,35 @@ export default {
 
         //
       }
+      let max =
+        Math.max.apply(
+          null,
+          this.validArray
+            .map(item => (typeof item.real === "number" ? item.real : void 0))
+            .filter(item => typeof item === "number")
+        ) / 2;
+      console.log(
+        "max",
+        max,
+        this.validArray
+          .map(item => (typeof item.real === "number" ? item.real : void 0))
+          .filter(item => typeof item === "number")
+      );
+      this.verChartData = JSON.parse(JSON.stringify(this.validArray))
+        .reverse()
+        .map(item => {
+          return {
+            item: typeof item.real === "string" ? max : item.real,
+            serialNumber: item.place,
+            type: item.bool === true ? "h" : item.bool === false ? "l" : "m"
+          };
+        });
+      this.$store.commit("setValidArray", this.validArray);
       return this.validArray;
+    },
+    setChartData() {
+      this.chartData = this.$store.state.mainArr;
+      console.log("this.chartData", this.chartData);
     },
     makeForecast(l, m, h) {
       let low = 0,
@@ -181,7 +256,7 @@ export default {
           h: (high / summ).toFixed(3),
           real: this.mainArray[this.commonCount - 1],
           forec: this.mainArray[this.commonCount - 1],
-          bool: "kek"
+          bool: "НЕ ОБРАБАТЫВАЕТСЯ"
         };
       } else {
         let l = low / summ,
@@ -235,7 +310,7 @@ export default {
         };
       }
     },
-  
+
     getPseudoRandomNumber(bool, mainArr, lingvisticMax, commonCount, realVal) {
       console.log(bool, mainArr, lingvisticMax, commonCount);
       if (bool) {
@@ -253,7 +328,8 @@ export default {
           isNaN(returnedValue)
         ) {
           returnedValue =
-            realVal + (-2 - 0.5 + Math.random() * (2 + -2 + 1)).toFixed(4) + parseFloat(this.$store.state.def);
+            (realVal + (-2 - 0.5 + Math.random() * (2 + -2 + 1))).toFixed(4) +
+            parseFloat(this.$store.state.def);
         }
         return returnedValue;
       }
@@ -261,6 +337,8 @@ export default {
   },
   mounted() {
     this.findBlah();
+
+    this.setChartData();
   }
 };
 </script>

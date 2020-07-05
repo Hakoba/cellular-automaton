@@ -9,7 +9,8 @@ export default new Vuex.Store({
     verArray: [], //массив полченный после верификации
     deep: null,
     buildInited: false,
-    def: '',
+    validArray: [],
+    def: 0,
   },
   mutations: {
     setMainArr(state, payload) {
@@ -20,10 +21,13 @@ export default new Vuex.Store({
     setVerificArray(state, payload) {
       state.verArray = payload;
     },
+    setValidArray(state,payload){
+      state.validArray = payload;
+    },
     setDeep(state, payload) {
       // console.log('DDDDDDDDDDDEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEPPPPPP')
       state.deep = payload;
-    }
+    },
   },
-  actions: {}
+  actions: {},
 });
